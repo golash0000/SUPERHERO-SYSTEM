@@ -3,8 +3,8 @@ SBIT-3K SUPER SYSTEM (Web)
 
 # Tech Stacks used for Development
 
-> Frontend UI Library
-- Bootstrap
-> Backend
-- MariaDB (XAMPP) for Local DBMS
-- Firebase?
+- Vanilla for frontend.
+- Bootstrap for styling.
+- Firebase for authentication.
+- MariaDB from XAMPP for local database management.
+- JSONs for simultaneous REST APIs.
