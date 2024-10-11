@@ -1,8 +1,27 @@
 /** import rules **/
 @import url("./modules/Login.module.css");
 
-/** custom font **/
+/** custom rules **/
 
 * {
     font-family: "Lexend", sans-serif;
+}
+
+html,body {
+    background: #e1e8f1;
+}
+
+/** life is extinct **/
+
+.screen-monitor-desktop {
+    display: none;
+}
+
+@media (max-width: 920px) and (min-width: 320px) {
+    .login-wrapper {
+        display: none;
+    }
+    .screen-monitor-desktop {
+        display: block;
+    }
 }
