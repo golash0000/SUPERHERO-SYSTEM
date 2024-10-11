@@ -1,0 +1,8 @@
+/** import rules **/
+@import url("./modules/Login.module.css");
+
+/** custom font **/
+
+* {
+    font-family: "Lexend", sans-serif;
+}
