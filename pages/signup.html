@@ -52,8 +52,13 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="confirm-password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirm-password" required>
+                    </div>
                     <button type="button" class="btn btn-danger w-100 mb-3" id="register-button">Register
-                        Account</button>
+                        Account
+                    </button>
                     <a href="../" class="btn btn-light w-100">Sign In</a>
                 </form>
             </div>
@@ -100,38 +105,77 @@
             const lastName = document.getElementById('lastName').value.trim();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirm-password').value.trim();
 
-            if (name === '' || lastName === '' || email === '' || password === '') {
+            // Simple regex for email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Check for empty fields
+            if (name === '' || lastName === '' || email === '' || password === '' || confirmPassword === '') {
                 alert('Please fill out all input fields before proceeding.');
-            } else {
-                // Dynamically add data-bs attributes to the button
-                this.setAttribute('data-bs-toggle', 'modal');
-                this.setAttribute('data-bs-target', '#confirmationModal');
-
-                // Show it
-                const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-                confirmationModal.show();
+                return;
             }
+
+            // Validate first name
+            if (name.length < 2) {
+                alert('First name must contain at least 2 letters.');
+                return;
+            }
+
+            // Validate last name
+            if (lastName.length < 2) {
+                alert('Last name must contain at least 2 letters.');
+                return;
+            }
+
+            // Validate email
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Validate password matching
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            // If all validations pass, show confirmation modal
+            this.setAttribute('data-bs-toggle', 'modal');
+            this.setAttribute('data-bs-target', '#confirmationModal');
+
+            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+            confirmationModal.show();
         });
 
-        function toggleDisplay() {
-            const loginContainer = document.getElementById('login-container');
-            const desktopMessage = document.getElementById('desktop-message');
-
-            if (window.innerWidth < 920) {
-                loginContainer.classList.add('d-none'); // Hide login container
-                desktopMessage.classList.remove('d-none'); // Show message
-            } else {
-                loginContainer.classList.remove('d-none'); // Show login container
-                desktopMessage.classList.add('d-none'); // Hide message
+        // Function to filter input for letters only (REALTIME BITCH)
+        function filterInput(event) {
+            const regex = /[^A-Za-z]/g;
+            if (regex.test(event.target.value)) {
+                event.target.value = event.target.value.replace(regex, '');
             }
         }
 
-        // Initial check
-        toggleDisplay();
+        document.getElementById('name').addEventListener('input', filterInput);
+        document.getElementById('lastName').addEventListener('input', filterInput);
 
-        // Add event listener for resize
-        window.addEventListener('resize', toggleDisplay);
+        // This website is not yet mobile-friendly :)
+        // function toggleDisplay() {
+        //     const loginContainer = document.getElementById('login-container');
+        //     const desktopMessage = document.getElementById('desktop-message');
+
+        //     if (window.innerWidth < 920) {
+        //         loginContainer.classList.add('d-none');
+        //         desktopMessage.classList.remove('d-none');
+        //     } else {
+        //         loginContainer.classList.remove('d-none');
+        //         desktopMessage.classList.add('d-none');
+        //     }
+        // }
+
+
+        // toggleDisplay();
+        // window.addEventListener('resize', toggleDisplay);
     </script>
 
 </body>

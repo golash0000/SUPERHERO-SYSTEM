@@ -54,35 +54,55 @@
             <span>This website is not yet mobile-friendly.</span>
         </div>
 
-        <!-- The elligible rights to authorize software usage is limited -->
-        <!-- <div class="principal-author">
-            <span>This property are part of belongings to Brgy. Sta Lucia</span>
-        </div> -->
-    </div>
+        <!-- Button to trigger the modal -->
+        <div class="principal-author">
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#infoModal">
+                Try this out.
+            </button>
+        </div>
+        
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script>
-        function toggleDisplay() {
-            const loginContainer = document.getElementById('login-container');
-            const desktopMessage = document.getElementById('desktop-message');
+        <!-- Modal Structure -->
+        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="infoModalLabel">Test Credentials</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <li>Email address: test@testuser.com</li>
+                        <li>Password: iamadmin</li>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            if (window.innerWidth < 920) {
-                loginContainer.classList.add('d-none'); // Hide login container
-                desktopMessage.classList.remove('d-none'); // Show message
-            } else {
-                loginContainer.classList.remove('d-none'); // Show login container
-                desktopMessage.classList.add('d-none'); // Hide message
-            }
-        }
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script>
+            // This website is not yet mobile-friendly :)
+            // function toggleDisplay() {
+            //     const loginContainer = document.getElementById('login-container');
+            //     const desktopMessage = document.getElementById('desktop-message');
 
-        // Initial check
-        toggleDisplay();
+            //     if (window.innerWidth < 920) {
+            //         loginContainer.classList.add('d-none');
+            //         desktopMessage.classList.remove('d-none');
+            //     } else {
+            //         loginContainer.classList.remove('d-none');
+            //         desktopMessage.classList.add('d-none');
+            //     }
+            // }
 
-        // Add event listener for resize
-        window.addEventListener('resize', toggleDisplay);
-    </script>
+
+            // toggleDisplay();
+            // window.addEventListener('resize', toggleDisplay);
+        </script>
 </body>
 
 </html>
