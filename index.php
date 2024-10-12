@@ -45,7 +45,7 @@
                         <input type="password" class="form-control" id="password" required>
                     </div>
                     <button type="submit" class="btn btn-danger w-100 mb-3">Sign In</button>
-                    <a href="./pages/signup.html" class="btn btn-light w-100">Sign Up</a>
+                    <a href="./pages/signup.php" class="btn btn-light w-100">Sign Up</a>
                 </form>
             </div>
         </section>
@@ -75,7 +75,7 @@
                         <li>Password: iamadmin</li>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
