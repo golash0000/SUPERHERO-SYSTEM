@@ -29,7 +29,7 @@
 
 <body>
     <div id="app">
-        <section id="login-container" class="d-flex align-items-center justify-content-center vh-100">
+        <section id="login-container" class="d-none d-md-flex align-items-center justify-content-center vh-100">
             <div class="login-wrapper">
                 <div class="login-header">
                     <h1 class="text-dark">Sign In</h1>
@@ -44,15 +44,15 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" required>
                     </div>
-                    <button type="submit" class="btn btn-danger w-100 mb-3">Login</button>
-                    <a href="./views/registration/signup.html" class="btn btn-light w-100">Sign Up</a>
+                    <button type="submit" class="btn btn-danger w-100 mb-3">Sign In</button>
+                    <a href="./pages/signup.html" class="btn btn-light w-100">Sign Up</a>
                 </form>
             </div>
         </section>
         <!-- This website is not mobile friendly ^^ -->
-        <!-- <div class="vh-100 d-flex align-items-center justify-content-center" id="desktop-message">
+        <div class="d-md-none d-none vh-100 d-flex align-items-center justify-content-center" id="desktop-message">
             <span>This website is not yet mobile-friendly.</span>
-        </div> -->
+        </div>
 
         <!-- Button to trigger the modal -->
         <div class="principal-author">
@@ -67,11 +67,11 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="infoModalLabel">Test User Credentials</h5>
+                        <h5 class="modal-title" id="infoModalLabel">Test Credentials</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <li>Email address: @testuser.com</li>
+                        <li>Email address: test@testuser.com</li>
                         <li>Password: iamadmin</li>
                     </div>
                     <div class="modal-footer">
