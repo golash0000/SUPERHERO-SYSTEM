@@ -1,3 +1,9 @@
+/**
+ * Note for developer the already comment outs is for Twig template engine
+ * just remove it to add the support
+ */
+
+
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 // const twig = require('gulp-twig');

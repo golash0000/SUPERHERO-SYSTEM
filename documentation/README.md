@@ -28,21 +28,21 @@ composer require twig/twig
 ```
 
 Copy this and paste it in the very last lines
-![Step 1](https://i.imgur.com/X6KB2Fj.gif)
+![Step 1](tutorial/STEP1.gif)
 
 2. Install Gulp with these two commands
 
 ```powershell
 npm install --global gulp-cli
 ```
-![Step 2 Part 1](https://i.imgur.com/POM1Iwu.gif)
+![Step 2 Part 1](tutorial/SIA101-STEP2-PART1.gif)
 
 ```powershell
 npm install --save-dev gulp gulp-twig
 ```
-![Step 2 Part 2](https://i.imgur.com/n2qLVji.gif)
+![Step 2 Part 2](tutorial/SIA101-STEP2-PART2.gif)
 
-![Step 3](https://i.imgur.com/kI4L5AO.gif)
+![Step 3](tutorial/STEP3.gif)
 
 3. To run our project make sure that XAMPP Apache Server is running and then execute this command
 ```powershell
