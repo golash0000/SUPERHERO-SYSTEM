@@ -28,6 +28,7 @@ composer require twig/twig
 ```
 
 Copy this and paste it in the very last lines
+
 ![Step 1](tutorial/STEP1.gif)
 
 2. Install Gulp with these two commands
