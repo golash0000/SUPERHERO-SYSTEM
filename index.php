@@ -49,10 +49,6 @@
                 </form>
             </div>
         </section>
-        <!-- This website is not mobile friendly ^^ -->
-        <div class="d-md-none d-none vh-100 d-flex align-items-center justify-content-center" id="desktop-message">
-            <span>This website is not yet mobile-friendly.</span>
-        </div>
 
         <!-- Button to trigger the modal -->
         <div class="principal-author">
@@ -61,7 +57,6 @@
             </button>
         </div>
         
-
         <!-- Modal Structure -->
         <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
             <div class="modal-dialog">
