@@ -3,7 +3,12 @@
 }
 
 .login-header h1 {
-    font-size: 1.857em;
+    font-size: 1.457em;
+}
+
+.login-header p,
+.form-label {
+    font-size: 0.957em;
 }
 
 .login-wrapper {
@@ -20,4 +25,10 @@
     right: 24px;
     font-size: 0.875em;
     user-select: none;
+}
+
+/* Overlap Bootstrap style */
+.btn {
+    padding: 6px;
+    font-size: 0.957em;
 }
