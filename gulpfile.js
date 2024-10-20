@@ -33,7 +33,8 @@ function serve() {
                 }
                 next();
             }
-        }
+        },
+        notify: false
     });
 
     gulp.watch(paths.html).on('change', browserSync.reload);
