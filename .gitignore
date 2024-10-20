@@ -8,14 +8,10 @@ logs/
 
 # Ignore PHPStorm and VSCode project files
 .idea/
-.vscode/
 
 # Ignore system files
 .DS_Store
 Thumbs.db
-
-# Ignore compiled CSS, JavaScript, or other build files (if any)
-dist/
 
 # Ignore environment configuration files
 .env
@@ -28,3 +24,7 @@ dist/
 
 # for composer
 composer.lock
+
+# nodeJS
+node_modules/
+package-lock.json
