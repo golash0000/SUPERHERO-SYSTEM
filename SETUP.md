@@ -1,4 +1,5 @@
 ## Step by step to run our Project
+This tutorial is horrific consider it by yourself patience is virtue.
 
 ```term
 For explicit concern we used template engine to handle client-side complexity measures.
@@ -14,6 +15,39 @@ For explicit concern we used template engine to handle client-side complexity me
 composer require twig/twig
 ```
 
+### 2.2 Tutorial (Simple)
+
+1. In XAMPP inside Apache open `Config` then Open your httpd.conf usually locates in `C:\xampp\apache\conf\httpd.conf` directory
+
+```powershell
+<Directory "C:/xampp/htdocs/SUPERHERO-SYSTEM">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+```
+
+Copy this and paste it in the very last lines
+< put gif here >
+
+2. Install Gulp with these two commands
+
+```powershell
+npm install --global gulp-cli
+```
+< put gif here >
+
+```powershell
+npm install --save-dev gulp gulp-twig
+```
+< put gif here >
+
+3. To run our project make sure that XAMPP Apache Server is running and then execute this command
+```powershell
+gulp
+```
+
 ## Special Notes
 - Twig is a library available to PHP as template engine to organize our client-side UI design pages.
 > For learning, please refer [here](https://twig.symfony.com/) 
+- Gulp is a separated NodeJS plugin that you can use to initialize apache missing auto-reload feature.
