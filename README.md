@@ -9,6 +9,9 @@
 ## SUPERHERO-SYSTEM
 SBIT-3K SUPER SYSTEM (Web)
 
+## How to run this project?
+For installation please kindly refer [here](documentation/README.md).
+
 ## Tech Stacks used for Development
 
 - [Vanilla PHP](https://www.apachefriends.org/) for life.
@@ -28,9 +31,6 @@ SBIT-3K SUPER SYSTEM (Web)
 ```powershell
 HTML,CSS,JS and Vanilla PHP
 ```
-
-## How to run this project?
-For installation please kindly refer [here](SETUP.md).
 
 ## Acknowledgement
 This project is open-source and yet only applicable to school activities in order for us to make our collaborations as special so this project dedicates to Brgy. Sta-Lucia for allowing us to provide our digitized solutions also this project dedicates to our Professor Norilyn for allowing us to make it happen.
