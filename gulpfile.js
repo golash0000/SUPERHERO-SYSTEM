@@ -3,7 +3,6 @@
  * just remove it to add the support
  */
 
-
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 // const twig = require('gulp-twig');
@@ -27,10 +26,17 @@ function serve() {
         proxy: {
             target: 'http://localhost/SUPERHERO-SYSTEM',
             middleware: function (req, res, next) {
+                // Redirect to your local frontend.
                 if (req.url.includes('/SUPERHERO-SYSTEM')) {
-                    // Rewrite URL to redirect to the root
                     req.url = req.url.replace('/SUPERHERO-SYSTEM', '');
                 }
+                
+                // Redirect /phpmyadmin to your local backend.
+                if (req.url.includes('/phpmyadmin')) {
+                    req.url = req.url.replace('/phpmyadmin', '/phpmyadmin');
+                    req.headers.host = 'localhost'; // Adjust header to match the XAMPP host
+                }
+                
                 next();
             }
         },
