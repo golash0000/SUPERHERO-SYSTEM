@@ -1,3 +1,11 @@
+## List are things very needed
+
+- [ ] Update documentation for new features
+- [ ] Add existing UI for Sign In, Sign Up process in a simple way.
+- [ ] Add existing Different Onboardings with `Admin1`, `Admin2`, `BPSO`, `BADAC`, `BCPC` and `LUPON` for handling Middlewares in PHP Form.
+- [ ] During implementation of Sign In, Sign Up functionality I need my Firebase get working.
+- [ ] There are so much more...
+
 ## SUPERHERO-SYSTEM
 SBIT-3K SUPER SYSTEM (Web)
 
