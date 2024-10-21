@@ -65,7 +65,7 @@
                         <h5 class="modal-title" id="infoModalLabel">Test Credentials</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="list-style-type: none;">
                         <li>Email address: test@testuser.com</li>
                         <li>Password: iamadmin</li>
                     </div>
