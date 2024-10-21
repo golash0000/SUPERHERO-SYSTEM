@@ -50,7 +50,8 @@ npm install --save-dev gulp gulp-twig
 gulp
 ```
 
-And after all of that please don't forget to read my project structure [here](SETUP.md)
+So after all of that please don't forget to read my project structure [here](SETUP.md)
+and then for list of possibly errors you may experience I've just list down inside [here](errors/README.md) 
 
 ## Special Notes
 - Twig is a library available to PHP as template engine to organize our client-side UI design pages.
