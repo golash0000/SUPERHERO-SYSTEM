@@ -50,6 +50,8 @@ npm install --save-dev gulp gulp-twig
 gulp
 ```
 
+And after all of that please don't forget to read my project structure [here](SETUP.md)
+
 ## Special Notes
 - Twig is a library available to PHP as template engine to organize our client-side UI design pages.
 > For learning, please refer [here](https://twig.symfony.com/) 
