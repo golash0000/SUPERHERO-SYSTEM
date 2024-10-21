@@ -67,6 +67,6 @@ Inside your affiliated department you should only care about how you implement t
 
 4. `views/templates` - This should only contains `.twig` files this is templated-engine for making dynamic webpages.
 
-That's all
+That's all hope this helps!!!
 
 Written by Kenneth O. (@lash0000)
