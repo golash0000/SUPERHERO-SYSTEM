@@ -1,25 +1,27 @@
 /**
- * Note for developer the already comment outs is for Twig template engine
- * just remove it to add the support
+ * Note for developer this contains twig template engine.
  */
 
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
-// const twig = require('gulp-twig');
+const twig = require('gulp-twig');
 
 const paths = {
     html: 'views/**/*.html',
     php: 'controllers/**/*.php',
     css: 'dist/css/*.css',
-    // twig: 'views/templates/**/*.twig',
+    twig: [
+        'views/registration/templates/**/*.twig',  // Registration templates
+        'views/dashboard/**/templates/**/*.twig'  // Templates for all departments inside dashboard
+    ],
     dist: 'dist/'
 };
 
-// function compileTwig() {
-//     return gulp.src(paths.twig)
-//         .pipe(twig())
-//         .pipe(gulp.dest(paths.dist));
-// }
+function compileTwig() {
+    return gulp.src(paths.twig)
+        .pipe(twig())
+        .pipe(gulp.dest(paths.dist));
+}
 
 function serve() {
     browserSync.init({
@@ -34,7 +36,7 @@ function serve() {
                 // Redirect /phpmyadmin to your local backend.
                 if (req.url.includes('/phpmyadmin')) {
                     req.url = req.url.replace('/phpmyadmin', '/phpmyadmin');
-                    req.headers.host = 'localhost'; // Adjust header to match the XAMPP host
+                    req.headers.host = 'localhost';
                 }
                 
                 next();
@@ -46,8 +48,8 @@ function serve() {
     gulp.watch(paths.html).on('change', browserSync.reload);
     gulp.watch(paths.php).on('change', browserSync.reload);
     gulp.watch(paths.css).on('change', browserSync.reload);
-    // gulp.watch(paths.twig, compileTwig).on('change', browserSync.reload);
+    gulp.watch(paths.twig, compileTwig).on('change', browserSync.reload);
 }
 
-// gulp.task('default', gulp.series(compileTwig, serve));
-gulp.task('default', serve);
+gulp.task('default', gulp.series(compileTwig, serve));
+// gulp.task('default', serve);

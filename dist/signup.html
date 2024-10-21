@@ -38,7 +38,7 @@
                 <form id="signup-form" method="POST" action="../process.php">
                     <div class="mb-2">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" value="{{ password }}" required>
+                        <input type="password" class="form-control" id="password" name="password" value="" required>
                     </div>
                     <div class="mb-2">
                         <label for="confirm-password" class="form-label">Confirm Password</label>
@@ -47,13 +47,13 @@
                     <div class="mb-4">
                         <label for="department" class="form-label">Affiliated Department</label>
                         <select class="form-control" id="department" name="department" required>
-                            <option value="" {% if department == '' %}selected{% endif %}>Unidentified</option>
-                            <option value="Admin1" {% if department == 'Admin1' %}selected{% endif %}>Administrator 1</option>
-                            <option value="Admin2" {% if department == 'Admin2' %}selected{% endif %}>Administrator 2</option>
-                            <option value="BPSO" {% if department == 'BPSO' %}selected{% endif %}>Barangay Public Safety Officer (BPSO)</option>
-                            <option value="BADAC" {% if department == 'BADAC' %}selected{% endif %}>Barangay Anti-Drug Abuse Council</option>
-                            <option value="BCPC" {% if department == 'BCPC' %}selected{% endif %}>Barangay Council for the Protection of Children</option>
-                            <option value="LUPON" {% if department == 'LUPON' %}selected{% endif %}>Lupon Tagapamayapa</option>
+                            <option value="" >Unidentified</option>
+                            <option value="Admin1" >Administrator 1</option>
+                            <option value="Admin2" >Administrator 2</option>
+                            <option value="BPSO" >Barangay Public Safety Officer (BPSO)</option>
+                            <option value="BADAC" >Barangay Anti-Drug Abuse Council</option>
+                            <option value="BCPC" >Barangay Council for the Protection of Children</option>
+                            <option value="LUPON" >Lupon Tagapamayapa</option>
                         </select>
                     </div>
 
