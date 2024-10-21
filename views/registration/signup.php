@@ -39,7 +39,7 @@ session_start();
                 <h1 class="text-dark">Sign Up</h1>
                 <p class="text-muted">New User? Provide all input fields we need.</p>
             </div>
-            <form id="signup-form" method="POST" action="process.php">
+            <form id="signup-form" method="POST" action="process.php" onsubmit="return validateForm()">
                 <div class="mb-2">
                     <label for="first_name" class="form-label">First name</label>
                     <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo isset($_SESSION['first_name']) ? $_SESSION['first_name'] : ''; ?>" required>
@@ -55,14 +55,14 @@ session_start();
                 <button type="submit" class="btn btn-danger w-100 mb-3" id="register-button">
                     Proceed
                 </button>
-                <button type="button" class="btn btn-light w-100" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                <button type="button" class="btn btn-light w-100" id="signInButton" data-bs-toggle="modal" data-bs-target="#confirmModal">
                     Sign In
                 </button>
             </form>
 
             <!-- Confirmation Modal -->
             <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
@@ -80,6 +80,7 @@ session_start();
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -149,22 +150,23 @@ session_start();
             }
         }
 
-        document.getElementById('name').addEventListener('input', filterInput);
-        document.getElementById('lastName').addEventListener('input', filterInput);
-
-        function validateForm() {
+        // Add event listener to Sign In button
+        document.getElementById('signInButton').addEventListener('click', function() {
             var firstName = document.getElementById('first_name').value;
             var lastName = document.getElementById('last_name').value;
             var email = document.getElementById('email').value;
-            
+
             // Check if all fields are empty
             if (firstName === '' && lastName === '' && email === '') {
-                document.getElementById('sign-in-button').style.display = 'block'; // Show the Sign In button
-                return false; // Prevent form submission
+                window.location.href = '../../';
+            } else {
+                // If at least one field is filled, show the modal
+                var modal = new bootstrap.Modal(document.getElementById('confirmModal'), {
+                    backdrop: false // Disable the background overlay
+                });
+                modal.show();
             }
-            
-            return true; // Allow form submission if inputs are filled
-        }
+        });
     </script>
 
 </body>
