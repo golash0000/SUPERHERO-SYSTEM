@@ -1,3 +1,14 @@
+<?php
+  session_start();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $_SESSION['first_name'] = $_POST['first_name'];
+      $_SESSION['last_name'] = $_POST['last_name'];
+      $_SESSION['email'] = $_POST['email'];
+      header('Location: proceed-continue.php');
+      exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,45 +55,17 @@
                         <label for="lastName" class="form-label">Last name</label>
                         <input type="text" class="form-control" id="lastName" required>
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-4">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="email" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirm-password" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirm-password" required>
-                    </div>
-                    <button type="button" class="btn btn-danger w-100 mb-3" id="register-button">Register
-                        Account
+                    <button type="button" class="btn btn-danger w-100 mb-3" id="register-button">
+                        Proceed
                     </button>
                     <a href="../../" class="btn btn-light w-100">Sign In</a>
                 </form>
             </div>
         </section>
-
-        <!-- Modal -->
-        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="confirmationModalLabel">Confirm Registration</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure you want to register your account with the provided details?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger">Confirm</button>
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- This website is not mobile friendly ^^ -->
         <!-- <div class="d-md-none d-none vh-100 d-flex align-items-center justify-content-center" id="desktop-message">
@@ -104,14 +87,14 @@
             const name = document.getElementById('name').value.trim();
             const lastName = document.getElementById('lastName').value.trim();
             const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value.trim();
-            const confirmPassword = document.getElementById('confirm-password').value.trim();
+            // const password = document.getElementById('password').value.trim();
+            // const confirmPassword = document.getElementById('confirm-password').value.trim();
 
             // Simple regex for email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             // Check for empty fields
-            if (name === '' || lastName === '' || email === '' || password === '' || confirmPassword === '') {
+            if (name === '' || lastName === '' || email === '') {
                 alert('Please fill out all input fields before proceeding.');
                 return;
             }
@@ -135,20 +118,13 @@
             }
 
             // Validate password matching
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                return;
-            }
-
-            // If all validations pass, show confirmation modal
-            this.setAttribute('data-bs-toggle', 'modal');
-            this.setAttribute('data-bs-target', '#confirmationModal');
-
-            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-            confirmationModal.show();
+            // if (password !== confirmPassword) {
+            //     alert('Passwords do not match.');
+            //     return;
+            // }
         });
 
-        // Function to filter input for letters only (REALTIME BITCH)
+        // Function to filter input for letters only (REALTIME HUHH)
         function filterInput(event) {
             const regex = /[^A-Za-z]/g;
             if (regex.test(event.target.value)) {
@@ -158,24 +134,6 @@
 
         document.getElementById('name').addEventListener('input', filterInput);
         document.getElementById('lastName').addEventListener('input', filterInput);
-
-        // This website is not yet mobile-friendly :)
-        // function toggleDisplay() {
-        //     const loginContainer = document.getElementById('login-container');
-        //     const desktopMessage = document.getElementById('desktop-message');
-
-        //     if (window.innerWidth < 920) {
-        //         loginContainer.classList.add('d-none');
-        //         desktopMessage.classList.remove('d-none');
-        //     } else {
-        //         loginContainer.classList.remove('d-none');
-        //         desktopMessage.classList.add('d-none');
-        //     }
-        // }
-
-
-        // toggleDisplay();
-        // window.addEventListener('resize', toggleDisplay);
     </script>
 
 </body>

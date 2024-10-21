@@ -44,7 +44,7 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" required>
                     </div>
-                    <button type="submit" class="btn btn-danger w-100 mb-3">Sign In</button>
+                    <button type="submit" class="btn btn-danger w-100 mb-3">Login</button>
                     <a href="./views/registration/signup.php" class="btn btn-light w-100">Sign Up</a>
                 </form>
             </div>
