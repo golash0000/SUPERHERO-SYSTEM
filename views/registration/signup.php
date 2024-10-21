@@ -52,12 +52,8 @@ session_start();
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" required>
                 </div>
-                <button type="submit" class="btn btn-danger w-100 mb-3" id="register-button">
-                    Proceed
-                </button>
-                <button type="button" class="btn btn-light w-100" id="signInButton" data-bs-toggle="modal" data-bs-target="#confirmModal">
-                    Sign In
-                </button>
+                <button type="submit" class="btn btn-danger w-100 mb-3" id="register-button">Proceed</button>
+                <button type="button" class="btn btn-light w-100" id="signInButton" data-bs-toggle="modal" data-bs-target="#confirmModal">Sign In</button>
             </form>
 
             <!-- Confirmation Modal -->
@@ -101,48 +97,47 @@ session_start();
         crossorigin="anonymous"></script>
 
     <script>
-        document.getElementById('register-button').addEventListener('click', function () {
-            const name = document.getElementById('name').value.trim();
-            const lastName = document.getElementById('lastName').value.trim();
+        // Attach event listener to restrict input to letters for the first and last name fields
+        document.getElementById('first_name').addEventListener('input', filterInput);
+        document.getElementById('last_name').addEventListener('input', filterInput);
+
+        // Validation function that runs on form submission
+        function validateForm() {
+            const firstName = document.getElementById('first_name').value.trim();
+            const lastName = document.getElementById('last_name').value.trim();
             const email = document.getElementById('email').value.trim();
-            // const password = document.getElementById('password').value.trim();
-            // const confirmPassword = document.getElementById('confirm-password').value.trim();
 
             // Simple regex for email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             // Check for empty fields
-            if (name === '' || lastName === '' || email === '') {
+            if (firstName === '' || lastName === '' || email === '') {
                 alert('Please fill out all input fields before proceeding.');
-                return;
+                return false;  // Prevent form submission
             }
 
-            // Validate first name
-            if (name.length < 2) {
+            // Validate first name (minimum 2 characters)
+            if (firstName.length < 2) {
                 alert('First name must contain at least 2 letters.');
-                return;
+                return false;  // Prevent form submission
             }
 
-            // Validate last name
+            // Validate last name (minimum 2 characters)
             if (lastName.length < 2) {
                 alert('Last name must contain at least 2 letters.');
-                return;
+                return false;  // Prevent form submission
             }
 
-            // Validate email
+            // Validate email format
             if (!emailRegex.test(email)) {
                 alert('Please enter a valid email address.');
-                return;
+                return false;  // Prevent form submission
             }
 
-            // Validate password matching
-            // if (password !== confirmPassword) {
-            //     alert('Passwords do not match.');
-            //     return;
-            // }
-        });
+            return true;  // Proceed with form submission
+        }
 
-        // Function to filter input for letters only (REALTIME HUHH)
+        // Function to filter input to letters only
         function filterInput(event) {
             const regex = /[^A-Za-z]/g;
             if (regex.test(event.target.value)) {
