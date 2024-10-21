@@ -50,7 +50,7 @@
             </div>
         </section>
 
-        <!-- Button to trigger the modal -->
+        <!-- show test user creds ^^ -->
         <div class="principal-author">
             <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#infoModal">
                 Try this out.

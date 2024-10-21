@@ -80,6 +80,25 @@ session_start();
         </div>
     </section>
 
+    <!-- Button to Trigger Modal -->
+    <!-- <div class="principal-author">
+        <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#loadingModal">
+            Try this out.
+        </button>
+    </div>
+
+    <div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center align-items-center" style="height: 200px;">
+                    <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
 
     <!-- This website is not mobile friendly ^^ -->
     <!-- <div class="d-md-none d-none vh-100 d-flex align-items-center justify-content-center" id="desktop-message">
