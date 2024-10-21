@@ -61,7 +61,9 @@ Kindly please read immediately.
 
 Inside your affiliated department you should only care about how you implement that kind of logic so that in many cases you will never be lost that's all I merely advise.
 
-2. `models/` - This should be only contains many .SQL files as much as possible the only that I can guarantee for you to follow the things that I've done inside XAMPP / MySQL is to provide my existing .SQL file for you to able to see my progress directly in terms of Tables.
+2. `models/` - This should be only contains many .SQL files as much as possible the only way that I can guarantee for you to follow the things that I've done inside XAMPP / MySQL is to provide my existing .SQL file for you to able to see my progress directly in terms of Tables.
+
+Aside from that once I already provided my working .SQL file is to follow the things that I've done if you implment Cardinality Relationships that's all good.
 
 3. `views/` - This contains more on client-side pages please priority inside affiliated departments where you assigned you may really need to care about your implemented logics in `controllers/` folder.
 
