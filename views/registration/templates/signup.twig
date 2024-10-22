@@ -35,7 +35,7 @@
                     <h1 class="text-dark">Sign Up</h1>
                     <p class="text-muted">Fill up more input fields we need.</p>
                 </div>
-                <form id="signup-form" method="POST" action="../process.php">
+                <form id="signup-form" method="POST" action="../process.php" onsubmit="return validateForm()">
                     <div class="mb-2">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" value="{{ password }}" required>
@@ -57,30 +57,49 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-danger w-100 mb-3" id="register-button">
+                    <button type="button" class="btn btn-danger w-100 mb-3" id="register-button" data-bs-toggle="modal" data-bs-target="#confirmRegistrationModal">
                         Submit
                     </button>
-                    <button type="button" class="btn btn-light w-100" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                    <button type="button" class="btn btn-light w-100" data-bs-toggle="modal" data-bs-target="#confirmCancelModal">
                         Go back
                     </button>
                 </form>
 
-                <!-- Confirmation Modal -->
-                <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                <!-- Confirmation Modal to Register New User -->
+                <div class="modal fade" id="confirmRegistrationModal" tabindex="-1" aria-labelledby="confirmRegistrationModalLabel" aria-hidden="true" data-bs-backdrop="static">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
+                                    <h5 class="modal-title" id="confirmRegistrationModalLabel">Confirm Registration</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Incompleted fields so any unsaved changes will be lost.
+                                    Are you sure you want to register with the provided information?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a href="../registration/signup.php" class="btn btn-danger">Confirm</a>
+                                    <button type="button" class="btn btn-danger" id="confirm-submit">Confirm</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirmation Modal for Canceling -->
+                <div class="modal fade" id="confirmCancelModal" tabindex="-1" aria-labelledby="confirmCancelModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmCancelModalLabel">Confirmation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Incompleted fields so any unsaved changes will be lost.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <a href="../registration/signup.php" class="btn btn-danger">Confirm</a>
                             </div>
                         </div>
                     </div>
@@ -99,7 +118,17 @@
         crossorigin="anonymous"></script>
 
     <script>
-        
+        function validateForm() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return false;
+            }
+
+            return true;
+        }
     </script>
 
 </body>
