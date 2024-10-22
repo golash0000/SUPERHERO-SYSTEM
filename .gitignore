@@ -1,0 +1,34 @@
+# Ignore Composer dependencies
+/vendor/
+
+# Twig Rendering (dist/) this contains every htmls from twig file
+dist/
+
+# Ignore cache and logs
+/cache/
+logs/
+*.log
+
+# Ignore PHPStorm and VSCode project files
+.idea/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment configuration files
+.env
+
+# Ignore backup and temporary files
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# for composer
+composer.lock
+composer.json
+
+# nodeJS
+node_modules/
+package-lock.json
