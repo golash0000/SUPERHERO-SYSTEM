@@ -56,8 +56,7 @@
                             <option value="LUPON" {% if department == 'LUPON' %}selected{% endif %}>Lupon Tagapamayapa</option>
                         </select>
                     </div>
-
-                    <button type="button" class="btn btn-danger w-100 mb-3" id="register-button" data-bs-toggle="modal" data-bs-target="#confirmRegistrationModal">
+                    <button type="button" class="btn btn-danger w-100 mb-3" id="register-button">
                         Submit
                     </button>
                     <button type="button" class="btn btn-light w-100" data-bs-toggle="modal" data-bs-target="#confirmCancelModal">
@@ -118,17 +117,37 @@
         crossorigin="anonymous"></script>
 
     <script>
+        document.getElementById("register-button").onclick = function() {
+            if (validateForm()) {
+                // If the form is valid, show the modal
+                var myModal = new bootstrap.Modal(document.getElementById('confirmRegistrationModal'));
+                myModal.show();
+            }
+        };
+
         function validateForm() {
             const password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("confirm-password").value;
 
             if (password !== confirmPassword) {
                 alert("Passwords do not match. Please try again.");
-                return false;
+                return false; // Prevent showing the modal
             }
 
-            return true;
+            // Check if the department is not the default value
+            const department = document.getElementById("department").value;
+            if (department === "") {
+                alert("Please select a department.");
+                return false; // Prevent showing the modal
+            }
+
+            return true; // Allow showing the modal
         }
+
+        // Handle the confirmation of the registration
+        document.getElementById("confirm-submit").onclick = function() {
+            document.getElementById("signup-form").submit(); // Submit the form
+        };
     </script>
 
 </body>
