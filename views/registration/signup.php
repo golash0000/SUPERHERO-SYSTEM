@@ -57,7 +57,7 @@ session_start();
             </form>
 
             <!-- Confirmation Modal -->
-            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true" data-bs-backdrop="static">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -99,12 +99,6 @@ session_start();
         </div>
     </div> -->
 
-
-    <!-- This website is not mobile friendly ^^ -->
-    <!-- <div class="d-md-none d-none vh-100 d-flex align-items-center justify-content-center" id="desktop-message">
-            <span>This website is not yet mobile-friendly.</span>
-        </div> -->
-
         <!-- The elligible rights to authorize software usage is limited -->
         <!-- <div class="principal-author">
             <span>This property are part of belongings to Brgy. Sta Lucia</span>
@@ -115,74 +109,64 @@ session_start();
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <script>
-        // Attach event listener to restrict input to letters for the first and last name fields
-        document.getElementById('first_name').addEventListener('input', filterInput);
-        document.getElementById('last_name').addEventListener('input', filterInput);
+        <script>
+            // Attach event listener to restrict input to letters for the first and last name fields
+            document.getElementById('first_name').addEventListener('input', filterInput);
+            document.getElementById('last_name').addEventListener('input', filterInput);
 
-        // Validation function that runs on form submission
-        function validateForm() {
-            const firstName = document.getElementById('first_name').value.trim();
-            const lastName = document.getElementById('last_name').value.trim();
-            const email = document.getElementById('email').value.trim();
+            function validateForm() {
+                const firstName = document.getElementById('first_name').value.trim();
+                const lastName = document.getElementById('last_name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            // Simple regex for email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                // Check for empty fields
+                if (firstName === '' || lastName === '' || email === '') {
+                    alert('Please fill out all input fields before proceeding.');
+                    return false;
+                }
 
-            // Check for empty fields
-            if (firstName === '' || lastName === '' || email === '') {
-                alert('Please fill out all input fields before proceeding.');
-                return false;  // Prevent form submission
+                // Validate first name (minimum 2 characters)
+                if (firstName.length < 2) {
+                    alert('First name must contain at least 2 letters.');
+                    return false;
+                }
+
+                // Validate last name (minimum 2 characters)
+                if (lastName.length < 2) {
+                    alert('Last name must contain at least 2 letters.');
+                    return false;
+                }
+
+                // Validate email format
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return false;
+                }
+
+                return true;
             }
 
-            // Validate first name (minimum 2 characters)
-            if (firstName.length < 2) {
-                alert('First name must contain at least 2 letters.');
-                return false;  // Prevent form submission
+            function filterInput(event) {
+                const regex = /[^A-Za-z]/g;
+                if (regex.test(event.target.value)) {
+                    event.target.value = event.target.value.replace(regex, '');
+                }
             }
 
-            // Validate last name (minimum 2 characters)
-            if (lastName.length < 2) {
-                alert('Last name must contain at least 2 letters.');
-                return false;  // Prevent form submission
-            }
+            // Add event listener to Sign In button
+            document.getElementById('signInButton').addEventListener('click', function() {
+                var firstName = document.getElementById('first_name').value;
+                var lastName = document.getElementById('last_name').value;
+                var email = document.getElementById('email').value;
 
-            // Validate email format
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return false;  // Prevent form submission
-            }
+                // Check if all fields are empty
+                if (firstName === '' && lastName === '' && email === '') {
+                    window.location.href = '../../';
+                }
+            });
+        </script>
 
-            return true;  // Proceed with form submission
-        }
-
-        // Function to filter input to letters only
-        function filterInput(event) {
-            const regex = /[^A-Za-z]/g;
-            if (regex.test(event.target.value)) {
-                event.target.value = event.target.value.replace(regex, '');
-            }
-        }
-
-        // Add event listener to Sign In button
-        document.getElementById('signInButton').addEventListener('click', function() {
-            var firstName = document.getElementById('first_name').value;
-            var lastName = document.getElementById('last_name').value;
-            var email = document.getElementById('email').value;
-
-            // Check if all fields are empty
-            if (firstName === '' && lastName === '' && email === '') {
-                window.location.href = '../../';
-            } else {
-                // If at least one field is filled, show the modal
-                var modal = new bootstrap.Modal(document.getElementById('confirmModal'), {
-                    backdrop: false // Disable the background overlay
-                });
-                modal.show();
-            }
-        });
-    </script>
 
 </body>
-
 </html>
