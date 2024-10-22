@@ -11,8 +11,8 @@ const paths = {
     php: 'controllers/**/*.php',
     css: 'dist/css/*.css',
     twig: [
-        'views/registration/templates/**/*.twig',  // Registration templates
-        'views/dashboard/**/templates/**/*.twig'  // Templates for all departments inside dashboard
+        'views/registration/templates/**/*.twig',  
+        'views/dashboard/**/templates/**/*.twig'
     ],
     dist: 'dist/'
 };

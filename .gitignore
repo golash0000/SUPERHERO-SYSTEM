@@ -1,6 +1,9 @@
 # Ignore Composer dependencies
 /vendor/
 
+# Twig Rendering (dist/) this contains every htmls from twig file
+dist/
+
 # Ignore cache and logs
 /cache/
 logs/
