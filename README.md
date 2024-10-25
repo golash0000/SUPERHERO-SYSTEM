@@ -2,8 +2,9 @@
 
 - [ ] Update documentation for new features
 - [X] Add existing UI for Sign In, Sign Up process in a simple way.
-- [ ] Add existing Different Onboardings with `Admin1`, `Admin2`, `BPSO`, `BADAC`, `BCPC` and `LUPON` for handling Middlewares in PHP Form.
+- [X] Add existing Different Onboardings with `Admin1`, `Admin2`, `BPSO`, `BADAC`, `BCPC` and `LUPON` for handling Middlewares in PHP Form.
 - [ ] During implementation of Sign In, Sign Up functionality I need my Firebase get working.
+- [ ] During aftermath of Firebase get working add Middleware for Authentication Security.
 - [ ] There are so much more...
 
 ## Barangay Management System
