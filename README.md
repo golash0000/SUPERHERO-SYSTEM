@@ -7,7 +7,7 @@
 - [ ] There are so much more...
 
 ## SUPERHERO-SYSTEM
-SBIT-3K SUPER SYSTEM (Web)
+BMS for Brgy. Sta Lucia (Our Supersystem Made by SBIT-3K from Quezon City University)
 
 ## How to run this project?
 For installation please kindly refer [here](documentation/README.md).
