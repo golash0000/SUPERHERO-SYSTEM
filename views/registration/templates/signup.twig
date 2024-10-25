@@ -1,3 +1,5 @@
+<!-- STANDARD PROGRAM (DON'T CHANGE IT) -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,14 +14,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="../../dist/images/favicon.ico" type="image/x-icon">
-    <!-- Open Graph Meta Tags -->
+    <!-- applicable for deployment -->
     <meta property="og:title" content="Portal Registration - Brgy Sta. Lucia">
     <meta property="og:description" content="Still in development phase.">
     <meta property="og:image" content="URL_to_your_image.jpg">
     <meta property="og:url" content="https://yourwebsite.com">
     <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Portal Registration - Brgy Sta. Lucia">
     <meta name="twitter:description" content="Still in development phase.">
@@ -119,7 +119,6 @@
     <script>
         document.getElementById("register-button").onclick = function() {
             if (validateForm()) {
-                // If the form is valid, show the modal
                 var myModal = new bootstrap.Modal(document.getElementById('confirmRegistrationModal'));
                 myModal.show();
             }
@@ -131,20 +130,19 @@
 
             if (password !== confirmPassword) {
                 alert("Passwords do not match. Please try again.");
-                return false; // Prevent showing the modal
+                return false;
             }
 
             // Check if the department is not the default value
             const department = document.getElementById("department").value;
             if (department === "") {
                 alert("Please select a department.");
-                return false; // Prevent showing the modal
+                return false;
             }
 
-            return true; // Allow showing the modal
+            return true;
         }
 
-        // Handle the confirmation of the registration
         document.getElementById("confirm-submit").onclick = function() {
             document.getElementById("signup-form").submit(); // Submit the form
         };

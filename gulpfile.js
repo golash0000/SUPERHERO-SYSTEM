@@ -1,3 +1,5 @@
+// STANDARD PROGRAM (DON'T CHANGE IT)
+
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const twig = require('gulp-twig');
