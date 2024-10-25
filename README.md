@@ -14,6 +14,7 @@ For installation please kindly refer [here](documentation/README.md).
 
 ## Tech Stacks used for Development
 
+- [Visual Studio Code](https://vscode.dev) as a Main character (IDE).
 - [Vanilla PHP](https://www.apachefriends.org/) for life.
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for styling.
 - [Firebase](https://firebase.google.com/docs/auth/web/start) for authentication.
