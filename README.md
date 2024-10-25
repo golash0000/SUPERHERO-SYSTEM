@@ -8,7 +8,7 @@
 - [ ] There are so much more...
 
 ## Barangay Management System
-BMS for Brgy. Sta Lucia (Our Supersystem Made by SBIT-3K from Quezon City University)
+BMS for Brgy. Sta Lucia (Our Supersystem made by SBIT-3K (During 1st Semester A.Y 2024 - 2025) from Quezon City University)
 
 ## How to run this project?
 For installation please kindly refer [here](documentation/README.md).
