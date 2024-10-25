@@ -1,3 +1,5 @@
+<!-- STANDARD PROGRAM (DON'T CHANGE IT) -->
+
 <?php
 session_start();
 

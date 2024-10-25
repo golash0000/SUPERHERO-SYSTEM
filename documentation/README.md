@@ -11,8 +11,13 @@ For explicit concern we used template engine to handle client-side complexity me
 - For PHP CLI, since we already have XAMPP this is optional but you may wanted to [check this out](https://windows.php.net/download/)
 
 ### 2. Install Dependencies exist to our Supersystem (Partial for now)
+
 ```powershell
 composer require twig/twig
+```
+
+```powershell
+composer require vlucas/phpdotenv
 ```
 
 ### 2.2 Tutorial (Simple)
