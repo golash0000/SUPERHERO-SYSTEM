@@ -6,7 +6,7 @@
 - [ ] During implementation of Sign In, Sign Up functionality I need my Firebase get working.
 - [ ] There are so much more...
 
-## SUPERHERO-SYSTEM
+## Barangay Management System
 BMS for Brgy. Sta Lucia (Our Supersystem Made by SBIT-3K from Quezon City University)
 
 ## How to run this project?
