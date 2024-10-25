@@ -1,5 +1,6 @@
 /** import rules **/
 @import url("./modules/Login.module.css");
+@import url("./modules/superadmin/Dashboard.module.css");
 
 /** custom rules **/
 
