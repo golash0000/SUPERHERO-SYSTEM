@@ -5,8 +5,8 @@ const twig = require('gulp-twig');
 const paths = {
     html: 'views/**/*.html',
     php: 'controllers/**/*.php',
-    css: 'dist/css/*.css',
-    moduleCss: 'custom/css/modules/**/*.*module.css', // Updated path for module CSS files
+    css: 'custom/css/*.css',
+    moduleCss: 'custom/css/modules/**/*.*module.css',
     twig: [
         'views/registration/templates/**/*.twig',  
         'views/dashboard/**/templates/**/*.twig'
@@ -19,9 +19,8 @@ function compileTwig() {
         .pipe(twig())
         .pipe(gulp.dest(paths.dist))
         .on('end', function() {
-            // After Twig files are compiled, copy module CSS
             return gulp.src(paths.moduleCss)
-                .pipe(gulp.dest(paths.dist + 'css')); // Adjust destination if needed
+                .pipe(gulp.dest(paths.dist + 'css'));
         });
 }
 
@@ -50,7 +49,7 @@ function serve() {
     gulp.watch(paths.html).on('change', browserSync.reload);
     gulp.watch(paths.php).on('change', browserSync.reload);
     gulp.watch(paths.css).on('change', browserSync.reload);
-    gulp.watch(paths.moduleCss, compileTwig).on('change', browserSync.reload); // Watch module CSS changes
+    gulp.watch(paths.moduleCss, compileTwig).on('change', browserSync.reload);
     gulp.watch(paths.twig, compileTwig).on('change', browserSync.reload);
 }
 
