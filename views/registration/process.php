@@ -11,7 +11,7 @@ $dotenv->load();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/templates');
 $twig = new \Twig\Environment($loader);
 
-// Function to generate a unique brgy_account_id
+// Do your random math HAHAHA
 function generateAccountId() {
     return rand(10000000000, 99999999999);
 }
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'brgy_email' => $_SESSION['email'],
             'brgy_firstName' => $_SESSION['first_name'],
             'brgy_lastName' => $_SESSION['last_name'],
-            'brgy_account_id' => $brgy_account_id, // Add the generated account ID here
+            'brgy_account_id' => $brgy_account_id,
             'brgy_account_user_type' => $_SESSION['account_user_type'],
         ];
 
