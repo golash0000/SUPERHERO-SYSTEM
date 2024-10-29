@@ -2,6 +2,8 @@
 session_start();
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+// STANDARD (DON'T MAKE ANY CHANGES)
+
 // Use .env for hiding confidential info.
 use Dotenv\Dotenv;
 
