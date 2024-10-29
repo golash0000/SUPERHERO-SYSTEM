@@ -217,6 +217,11 @@
         document.querySelectorAll('.sidebar-submenu-item').forEach(item => {
             item.addEventListener('mouseenter', createRipple);
         });
+
+            document.getElementById('confirmSignOutBtn').addEventListener('click', function () {
+        // Redirect to signout.php to handle session destruction and redirection
+        window.location.href = '../../../../signout.php';
+    });
     </script>
 </body>
 

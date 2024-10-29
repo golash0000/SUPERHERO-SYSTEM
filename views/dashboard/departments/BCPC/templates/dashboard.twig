@@ -16,7 +16,7 @@
     <link href="../../../../../custom/css/index.css" rel="stylesheet">
     <link rel="icon" href="../../dist/images/favicon.ico" type="image/x-icon">
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Onboarding as BADAC Officer for Brgy. Management">
+    <meta property="og:title" content="Onboarding as BCPC Officer for Brgy. Management">
     <meta property="og:description" content="Still in development phase.">
     <meta property="og:image" content="URL_to_your_image.jpg">
     <meta property="og:url" content="https://yourwebsite.com">
@@ -24,7 +24,7 @@
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Onboarding as BADAC Officer for Brgy. Management">
+    <meta name="twitter:title" content="Onboarding as BCPC Officer for Brgy. Management">
     <meta name="twitter:description" content="Still in development phase.">
     <meta name="twitter:image" content="URL_to_your_image.jpg">
     <meta name="twitter:url" content="https://yourwebsite.com">
@@ -38,13 +38,14 @@
 
                 <div class="sidebar-category">
                     <div class="sidebar-category-header">
-                        <span><i class="fas fa-user-friends category-icon"></i>Brgy. Anti Drug Abuse Council</span>
+                        <span><i class="fas fa-child category-icon"></i>Brgy. Council for the Protection of
+                            Children</span>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     <div class="sidebar-submenu-show">
-                        <div class="sidebar-submenu-item">Overview</div>
-                        <div class="sidebar-submenu-item">E-Forms</div>
-                        <div class="sidebar-submenu-item">Transactions</div>
+                        <div class="sidebar-submenu-item">Blank 1</div>
+                        <div class="sidebar-submenu-item">Blank 2</div>
+                        <div class="sidebar-submenu-item">Blank 3</div>
                         <div class="sidebar-submenu-item">Blank 1</div>
                         <div class="sidebar-submenu-item">Blank 2</div>
                         <div class="sidebar-submenu-item">Blank 3</div>
@@ -140,6 +141,10 @@
         document.querySelectorAll('.sidebar-submenu-item').forEach(item => {
             item.addEventListener('mouseenter', createRipple);
         });
+            document.getElementById('confirmSignOutBtn').addEventListener('click', function () {
+        // Redirect to signout.php to handle session destruction and redirection
+        window.location.href = '../../../../../signout.php';
+    });
     </script>
 </body>
 

@@ -45,12 +45,12 @@
 </head>
 
 <body>
-    <div id="app">
+<div id="app">
         <div class="spinner-border text-danger" role="status">
             <span class="sr-only">Loading...</span>
         </div>
         <h5 class="mt-4">
-            Signing in as {{ brgy_account_user_type }}
+            Signing in as {{ user_type }} 
         </h5>
     </div>
 
@@ -59,7 +59,10 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-        
+        // Redirect to dashboard after 3 seconds
+        setTimeout(function() {
+            window.location.href = "{{ redirect_url }}";
+        }, 3000); // 3000ms = 3 seconds
     </script>
 </body>
 

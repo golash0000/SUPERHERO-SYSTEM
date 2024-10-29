@@ -1,12 +1,12 @@
 <?php
-session_start(); // Start the session
+session_start();
 
-// Render the login form if not signed in
-// echo $twig->render('signup.twig');
+// error message for handling sign in session lmao
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-info">' . $_SESSION['message'] . '</div>';
+    unset($_SESSION['message']);
+}
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
