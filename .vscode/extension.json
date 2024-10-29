@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "pkief.material-icon-theme",
-        "whatwedo.twig"
+        "whatwedo.twig",
+        "bmewburn.vscode-intelephense-client"
     ]
 }

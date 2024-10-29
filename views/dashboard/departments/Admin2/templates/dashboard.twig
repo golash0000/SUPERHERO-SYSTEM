@@ -55,7 +55,7 @@
 
                 <div class="sidebar-category">
                     <div class="sidebar-category-header">
-                        <span><i class="fa-solid fa-gear category-icon"></i>Account Settings</span>
+                        <span><i class="fa-solid fa-id-card category-icon"></i>User Profile</span>
                     </div>
                 </div>
 
@@ -142,6 +142,11 @@
         document.querySelectorAll('.sidebar-submenu-item').forEach(item => {
             item.addEventListener('mouseenter', createRipple);
         });
+
+            document.getElementById('confirmSignOutBtn').addEventListener('click', function () {
+        // Redirect to signout.php to handle session destruction and redirection
+        window.location.href = '../../../../../signout.php';
+    });
     </script>
 </body>
 

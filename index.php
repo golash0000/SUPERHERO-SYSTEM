@@ -1,4 +1,12 @@
-<!-- STANDARD PROGRAM (DON'T CHANGE IT) -->
+<?php
+session_start();
+
+// error message for handling sign in session lmao
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-info">' . $_SESSION['message'] . '</div>';
+    unset($_SESSION['message']);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,14 +45,14 @@
                     <h1 class="text-dark">Sign In</h1>
                     <p class="text-muted">Enter your credentials.</p>
                 </div>
-                <form method="get">
+                <form method="post" action="verification.php">
                     <div class="mb-2">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" required>
+                        <input type="email" name="email" class="form-control" id="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" required>
+                        <input type="password" name="password" class="form-control" id="password" required>
                     </div>
                     <button type="submit" class="btn btn-danger w-100 mb-3">Login</button>
                     <a href="./views/registration/signup.php" class="btn btn-light w-100">Sign Up</a>

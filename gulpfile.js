@@ -6,7 +6,11 @@ const twig = require('gulp-twig');
 
 const paths = {
     html: 'views/**/*.html',
-    php: 'controllers/**/*.php',
+    php: [
+        'controllers/**/*.php',
+        'views/dashboard/**/*.php',  
+        'views/registration/**/*.php'
+    ],
     css: 'custom/css/*.css',
     moduleCss: 'custom/css/modules/**/*.*module.css',
     twig: [

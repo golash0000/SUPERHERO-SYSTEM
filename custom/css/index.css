@@ -1,7 +1,8 @@
-/** STANDARD PROGRAM (DON'T CHANGE IT) **/
+/** CUSTOM PROGRAM (FELL FREE TO CHANGE IT) **/
 
 /** import rules **/
 @import url("./modules/Login.module.css");
+@import url("./modules/superadmin/Sidebar.module.css");
 @import url("./modules/superadmin/Sidebar.module.css");
 
 /** custom rules **/
