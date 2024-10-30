@@ -40,7 +40,7 @@ function getTemplatePath($userType) {
         'BADAC' => 'views/dashboard/departments/BADAC/templates/dashboard.twig',
         'BPSO' => 'views/dashboard/departments/BPSO/templates/dashboard.twig',
         'Admin1' => 'views/dashboard/departments/Admin1/templates/dashboard.twig',
-        'Admin2' => 'views/dashboard/departments/Admin2/templates/dashboard.twig',
+        'Admin2' => 'views/dashboard/departments/Admin2/templates/dashboard/dashboard.twig',
         'BCPC' => 'views/dashboard/departments/BCPC/templates/dashboard.twig',
         'LUPON' => 'views/dashboard/departments/LUPON/templates/dashboard.twig'
     ];
