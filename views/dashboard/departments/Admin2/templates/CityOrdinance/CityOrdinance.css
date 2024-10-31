@@ -1,0 +1,45 @@
+.btn-primary {
+    background-color: #e86767 !important;
+    border: none !important;
+    float: right;
+    color: black;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+  .btn-primary:hover {
+    background-color: #e74f4f !important;
+  }
+  .ordinance-img {
+    float: left;
+  }
+  .card {
+    width: 400px !important;
+    height: 100px !important;
+    margin-bottom: 30px;
+    border-radius: 20px !important;
+    border: 1px solid black !important;
+  }
+  .card-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .card-text {
+    font-size: 1.2rem;
+  }
+  .card-body {
+    margin-left: 50px;
+  }
+  .card-body > img {
+    height: 100px;
+    width: 100px;
+  }
+  .ordinance-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  

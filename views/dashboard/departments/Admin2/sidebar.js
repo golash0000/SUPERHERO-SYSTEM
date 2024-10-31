@@ -49,3 +49,22 @@ document.addEventListener("click", (e) => {
       "/SUPERHERO-SYSTEM/SUPERHERO-SYSTEM/views/dashboard/departments/Admin2/templates/DocumentTemplate/Template.twig";
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPath = window.location.pathname;
+  if(currentPath.includes("/dashboard.twig")){
+    document.querySelector('.dashboard').style.color = '#d40303';
+    document.querySelector('.dashboard').style.backgroundColor = '#e7f1ff'
+  }else if(currentPath.includes("/CityOrdinance.twig")){
+    document.querySelector('.CityOrdinance').style.color = '#d40303';
+    document.querySelector('.CityOrdinance').style.backgroundColor = '#e7f1ff'
+
+  }
+  else if(currentPath.includes("/Request.twig")){
+    document.querySelector('.request').style.backgroundColor = '#e7f1ff'
+    document.querySelector('.request').style.color = '#d40303';
+  }
+  else if(currentPath.includes("/Template.twig")){
+    document.querySelector('.template').style.backgroundColor = '#e7f1ff'
+    document.querySelector('.template').style.color = '#d40303';
+  }
+});

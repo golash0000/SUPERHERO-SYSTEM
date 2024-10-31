@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/css/perfect-scrollbar.css">
     <link href="../../../../../../custom/css/index.css" rel="stylesheet">
     <link rel="icon" href="../../dist/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href = "../../Admin2.css">
+    <link rel="stylesheet" href = "./request.css">
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Onboarding as Admin 2 for Brgy. Management">
     <meta property="og:description" content="Still in development phase.">
@@ -35,7 +38,41 @@
         <header class = "header">
         
         </header>
+        <div class = "container">
+        <h1>Secretary Portal</h1>
+       <div class = "table-container">
+       <table class = "table table-bordered">
+          <thead >
+            <tr>
+              <th scope="col" class="text-center" style="font-size: 2rem">
+                ID
+              </th>
+              <th scope="col" class="text-center" style="font-size: 2rem">
+                TITLE
+              </th>
+              <th scope="col" class="text-center" style="font-size: 2rem">
+                REQUEST DATE
+              </th>
+             
+              <th scope="col" class="text-center" style="font-size: 2rem">
+                SUBMITTED BY
+              </th>
+              <th scope="col" class="text-center" style="font-size: 2rem">
+                Document Type
+              </th>
+              <th scope="col" class="text-center" style="font-size: 2rem">
+                STATUS
+              </th>
+              <th scope="col" class="text-center" style="font-size: 2rem">
+                Action
+              </th>
+            </tr>
+          </thead>
+        <tbody class="tbody"></tbody>
 
+       </table>
+       </div>
+        </div>
         <!-- Sign Out Confirmation Modal -->
         <div class="modal fade" id="signOutModal" tabindex="-1" aria-labelledby="signOutModalLabel" aria-hidden="true"
             data-bs-backdrop="static" data-bs-keyboard="false">
@@ -57,7 +94,7 @@
             </div>
         </div>
     </div>
-
+    <script src = "actions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/dist/perfect-scrollbar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-{% set name = "Menard"%}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/css/perfect-scrollbar.css">
     <link href="../../../../../../custom/css/index.css" rel="stylesheet">
     <link rel="icon" href="../../dist/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href = "../../Admin2.css">
+    <link rel="stylesheet" href = "./dashboard.css">
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Onboarding as Admin 2 for Brgy. Management">
     <meta property="og:description" content="Still in development phase.">
@@ -33,8 +34,76 @@
 <body>
     <div id="app">
         <header class = "header">
-        
-        </header>
+ </header>
+            <main>
+      <div class="container" >
+        <h1>SECRETARY PORTAL</h1>
+        <div class="cards-container">
+          <div class="row" style="max-height: 500px;">
+            <div class="col">
+              <div class="card" style="width: 400px; height: 300px">
+                <a href="">
+                  <div class="card-body">
+                    <img
+                      src="../../assets/images/pending logo.png"
+                      class="card-img-top"
+                      alt=""
+                    />
+                    <h2><b>Request</b></h2>
+                    <h3 style = "color:orange">Pending</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="width: 400px; height: 300px">
+                <a href="">
+                  <div class="card-body">
+                    <img
+                      src="../../assets/images/approved logo.png"
+                      class="card-img-top"
+                      alt=""
+                    />
+                    <h2><b>Request</b></h2>
+                    <h3 style = "color:green">Approved</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="width: 400px; height: 300px">
+                <a href="">
+                  <div class="card-body">
+                    <img
+                      src="../../assets/images/disapproved logo.png"
+                      class="card-img-top"
+                      alt=""
+                    />
+                    <h2><b>Request</b></h2>
+                    <h3 style = "color:red">Disapproved</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="width: 400px; height: 300px">
+                <a href="">
+                  <div class="card-body">
+                    <img
+                      src="../../assets/images/notifications logo.png"
+                      class="card-img-top"
+                      alt=""
+                    />
+                    <h2><b>Notifications</b></h2>
+                    <h3 style = "color:blue">Unread(0)</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
         <!-- Sign Out Confirmation Modal -->
         <div class="modal fade" id="signOutModal" tabindex="-1" aria-labelledby="signOutModalLabel" aria-hidden="true"
