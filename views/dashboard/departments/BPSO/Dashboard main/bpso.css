@@ -1,0 +1,8 @@
+.sidebar-submenu-show {
+    display: none;
+}
+
+
+.dropdown-menu {
+    z-index: 2;
+}
