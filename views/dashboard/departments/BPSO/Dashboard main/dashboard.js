@@ -1,68 +1,99 @@
-
-// ito naman yung sa rendering ng side bar  
-// Function para i-toggle ang display ng submenu
 function toggleSubMenu() {
     const submenu = document.querySelector(".sidebar-submenu-show");
     submenu.style.display = submenu.style.display === "none" || submenu.style.display === "" ? "block" : "none";
 }
-
 // ito naman para ipakita ang specific section
-function showSection(sectionId) {
-   
-    document.querySelectorAll("section").forEach(section => {
-        section.style.display = "none"; 
-    });
-    
-    
-    const sectionToShow = document.getElementById(sectionId);
+function showSection(sectionId) { document.querySelectorAll("section").forEach(section => { section.style.display = "none";  });
+const sectionToShow = document.getElementById(sectionId);
     if (sectionToShow) {
-        sectionToShow.style.display = "block";
+        sectionToShow.style.display = "block";}}
+window.onload = function() {
+    showSection('dasboardsection');};
+window.onload = function() {
+    if (window.location.hash === '#complaintsection') {
+        document.getElementById('complaintsection').style.display = 'block';
     }
+};
+// Complaint pag filter ng table 
+
+let selectedCategory = 'All'; 
+ function selectCategory(category) {  selectedCategory = category; document.getElementById("dropdownButton").textContent = category;
+        filterTable(); 
+    } function filterTable() { const searchInput = document.getElementById("search-input") ? document.getElementById("search-input").value.toLowerCase() : "";
+    const table = document.getElementById("tablecase");
+    const rows = table.getElementsByTagName("tr");
+        for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        const caseCategory = cells[2] ? cells[2].textContent : ""; 
+        const matchesCategory = (caseCategory === selectedCategory || selectedCategory === 'All');
+         const matchesSearch = searchInput === "" || rows[i].textContent.toLowerCase().includes(searchInput);
+        rows[i].style.display = matchesCategory && matchesSearch ? "" : "none";}}
+
+ // Pag gawa ng bagong textbox para sa complainant 
+function addComplainant() {
+    const container = document.getElementById('complainant-container');
+    
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Name';
+    nameInput.style.cssText = 'padding: 15px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;';
+
+   
+    const addressInput = document.createElement('input');
+    addressInput.type = 'text';
+    addressInput.placeholder = 'Address';
+    addressInput.style.cssText = 'padding: 13px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;';
+
+   
+    container.appendChild(nameInput);
+    container.appendChild(addressInput);
+
+   
+    const button = document.getElementById('add-button');
+    const totalInputs = container.children.length;
+    button.style.top = (100 + totalInputs * 60) + 'px'; 
 }
 
-window.onload = function() {
-    showSection('dasboardsection');
+//  add button para sa Respondent
+function addRespondent() {
+    const container = document.getElementById('respondent-container');
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Name';
+    nameInput.style.cssText = 'padding: 15px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;';
+    const addressInput = document.createElement('input');
+    addressInput.type = 'text';
+    addressInput.placeholder = 'Address';
+    addressInput.style.cssText = 'padding: 13px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;';
+    container.appendChild(nameInput);
+    container.appendChild(addressInput);
+    const button = document.getElementById('add-buttons');
+    const totalInputs = container.children.length;
+    button.style.top = (100 + totalInputs * 60) + 'px'; 
+}
+function updateButtonText(text, buttonId, event) {
+    const button = document.getElementById(buttonId);
+    button.textContent = text; 
+    if (buttonId === 'specialcasedrop') {
+        document.getElementById('hiddenSpecialCase').value = text; 
+    } else if (buttonId === 'dropdowncategory') {
+        document.getElementById('hiddenCategory').value = text;
+    }
+}
+// pag generate ng case number
+document.getElementById("openModalButton").onclick = function() {
+    document.getElementById("report-create").style.display = "block";
+};
+document.querySelector(".close-btn").onclick = function() {
+    document.getElementById("report-create").style.display = "none";
+};
+window.onclick = function(event) {
+    const modal = document.getElementById("report-create");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 };
 
 
 
 
-
-// Complaint pag filter ng table 
-let selectedCategory = "";
-
-function selectCategory(category) {
-    selectedCategory = category;
-    filterTable();
-   
-document.getElementById("dropdownButton").innerText = selectedCategory || "Category";
-}
-
-function filterTable() {
-const searchInput = document.getElementById("search-input").value.toLowerCase();
-const table = document.getElementById("tablecase");
-const rows = table.getElementsByTagName("tr");
-
-console.log('Search Input:', searchInput);
-console.log('Selected Category:', selectedCategory);
-
-for (let i = 1; i < rows.length; i++) {
- const cells = rows[i].getElementsByTagName("td");
- const caseNumber = rows[i].getElementsByTagName("th")[0].textContent || "";
- const complaint = cells[0].textContent || "";
- const respondent = cells[1].textContent || "";
- const status = cells[3].textContent || "";
- const natureOfCase = cells[4].textContent || "";
-
-    const matchesSearch = caseNumber.toLowerCase().includes(searchInput) ||
-    complaint.toLowerCase().includes(searchInput) ||
-    respondent.toLowerCase().includes(searchInput) ||
-        status.toLowerCase().includes(searchInput);
-        const matchesCategory = !selectedCategory || natureOfCase === selectedCategory;
-        if (matchesSearch && matchesCategory) {
-            rows[i].style.display = "";
-        } else {
-            rows[i].style.display = "none";
-        }
-    }
-}
