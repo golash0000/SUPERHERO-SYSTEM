@@ -12,6 +12,12 @@ $databases = [
         'dbname' => 'bms_main_portal',
         'username' => 'root',
         'password' => '',
+    ],
+   'bms_bpso_portal' => [
+        'host' => '127.0.0.1',
+        'dbname' => 'bms_bpso_portal',
+        'username' => 'root',
+        'password' => ''
     ]
     // Add more databases as needed
 ];
@@ -33,8 +39,9 @@ function getDatabaseConnections() {
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             ]);
             $connections[$dbName] = $pdo; // Store the PDO instance with the key as database name
+           
         } catch (PDOException $e) {
-            die("Database connection to {$dbName} failed: " . $e->getMessage());
+            echo("Database connection to {$dbName} failed: " . $e->getMessage());
         }
     }
 
@@ -43,4 +50,5 @@ function getDatabaseConnections() {
 
 // Initialize connections to all databases
 $databaseConnections = getDatabaseConnections();
+$pdo = $databaseConnections['bms_bpso_portal']??null;
 ?>
