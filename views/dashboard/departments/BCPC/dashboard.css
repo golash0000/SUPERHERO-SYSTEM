@@ -1,0 +1,27 @@
+/** CUSTOM PROGRAM (FELL FREE TO CHANGE IT) **/
+
+/** import rules **/
+@import url("./modules/Login.module.css");
+@import url("./modules/superadmin/Sidebar.module.css");
+@import url("./modules/superadmin/Sidebar.module.css");
+
+/** custom rules **/
+
+* {
+    font-family: "Lexend", sans-serif;
+}
+
+html,body {
+    background: #e1e8f1;
+}
+
+body{
+    display: flex;
+}
+
+.content-area {
+    margin-left: 320px;
+    flex: 1;
+    padding: 20px;
+}
+
