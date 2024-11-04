@@ -20,8 +20,19 @@ body{
 }
 
 .content-area {
+    margin-top: 100px;
     margin-left: 320px;
     flex: 1;
     padding: 20px;
 }
-
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr auto; /* 1fr for text, auto width for iframe */
+    /* align-items: center; Vertically center-aligns items */
+    margin-top: 0;
+  }
+  
+  .grid-container p {
+    margin-right: 20px; /* Add space between text and iframe */
+  }
+  
