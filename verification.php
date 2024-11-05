@@ -37,7 +37,7 @@ function getTemplatePath($userType) {
     $paths = [
         'super_admin' => 'views/dashboard/super_admin/templates/dashboard.twig',
         'head_admin' => 'views/dashboard/head_admin/templates/dashboard.twig',
-        'BADAC' => 'views/dashboard/departments/BADAC/templates/dashboard.twig',
+        'BADAC' => 'views/dashboard/departments/BADAC/templates/home.html',
         'BPSO' => 'views/dashboard/departments/BPSO/templates/dashboard.twig',
         'Admin1' => 'views/dashboard/departments/Admin1/templates/dashboard.twig',
         'Admin2' => 'views/dashboard/departments/Admin2/templates/dashboard/dashboard.twig',
