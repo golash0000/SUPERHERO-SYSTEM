@@ -66,160 +66,202 @@
 
       
         <section id="dasboardsection">
-        <div style="position: relative; height: 130px; width: 100%; top: -27px; border: 1px solid #d4d4d4; background-color: #ffffff;">
-                <h1 style="position: absolute; top: 35px; left: 21%;">DASHBOARD</h1>
+            <div style="position: relative; top: 0; left: 0; height: 104px; width: 100%; border: 1px solid #d4d4d4; background-color: #ffffff; display: flex; align-items: center; padding-left: 20%; ">
+                <h1 style="font-size: 2rem;">DASHBOARD</h1>
             </div>
+            
+            
+            
+            <div style="margin-top: 13px; padding: 20px; height: 100vh; width: 100%; box-sizing: border-box; background-color: #ffffff;">
 
-            <div style="position: absolute; top: 114px; bottom: 0; height: 1000px; width: 100%; border: 1px solid #d4d4d4; background-color: #ffffff;">
-        </section>
+        
+            </section>
+
 
       
 
 
 
-    <
+        </div>
 
 
 
          <!-- Complaint management-->
         <section id="complaintsection"  style="display: none;">
-            <div style="position: relative; height: 130px; width: 100%; top: -50px; border: 1px solid #d4d4d4; background-color: #ffffff;">
-                <h1 style="position: absolute; top: 35px; left: 21%;">COMPLAINT</h1>
+            <div style="position: relative; top: 0; left: 0; height: 104px; width: 100%; border: 1px solid #d4d4d4; background-color: #ffffff; display: flex; align-items: center; padding-left: 20%; ">
+                <h1 style="font-size: 2rem;">COMPLAINT</h1>
             </div>
+            
+            
+            
+            <div style="margin-top: 13px; padding: 20px; height: 100vh; width: 100%; box-sizing: border-box; background-color: #ffffff; display: flex; flex-direction: column; align-items: flex-start;">
+    <input type="text" id="search-input" placeholder="Search..." onkeyup="filterTable()" style="padding: 10px; width: 70%; max-width: 700px; margin-top: 50px; margin-left: 400px;"> 
 
-            <div style="position: absolute; top: 114px; bottom: 0; height: 1000px; width: 100%; border: 1px solid #d4d4d4; background-color: #ffffff;">
-                <input type="text" id="search-input" placeholder="Search..." onkeyup="filterTable()" style="padding: 10px; position: relative; top: 60px; left: 470px; width: 700px;">
-
-                <!-- Category dropdown -->
-    <div class="dropdown" style="position: relative; display: flex; justify-content: center; align-items: center; height: 200px; top: 70px; left: -380px;">
-        <button id="dropdownButton" class="btn btn-info dropdown-toggle btn-hover" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="position: relative; display: block; width: 300px; height: 50px; font-size: 20px; background-color: #ffffff; border: 1px solid #b1b1b1; z-index: 2;">
-                        Category
+    <!-- Category dropdown -->
+    <div class="dropdown" style="display: flex; justify-content: flex-start; align-items: center; margin-top: 100px; margin-left: 400px;"> 
+        <button id="dropdownButton" class="btn btn-info dropdown-toggle btn-hover" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: block; width: 300px; height: 50px; font-size: 20px; background-color: #ffffff; border: 1px solid #b1b1b1;">
+            Category
         </button>
-    <ul class="dropdown-menu" style="z-index: 2;">
-    <li><a class="dropdown-item" href="#" onclick="selectCategory('Minor case')">Minor case</a></li>
-     <li><a class="dropdown-item" href="#" onclick="selectCategory('Major case')">Major case</a></li>
-    
-     </ul>
+        <ul class="dropdown-menu" style="z-index: 2;">
+            <li><a class="dropdown-item" href="#" onclick="selectCategory('Minor case')">Minor case</a></li>
+            <li><a class="dropdown-item" href="#" onclick="selectCategory('Major case')">Major case</a></li>
+        </ul>
     </div>
 
- <!-- Case table -->
+    <!-- Case table -->
+    <?php
+    include 'C:\xampp\htdocs\SUPERHERO-SYSTEM\controllers\db_connection.php';
+    $sql = "SELECT * FROM complaint"; 
 
-<?php
-
-include 'C:\xampp\htdocs\SUPERHERO-SYSTEM\controllers\db_connection.php';
-$sql = "SELECT * FROM complaint"; 
-
-try {
-    $stmt = $pdo->query($sql); 
-} catch (PDOException $e) {
-    echo "Query failed: " . $e->getMessage();
-    exit; 
-}
-echo '<table id="tablecase" class="table table-bordered" style="left: 23%; width: 1500px; top: 70px; position: relative; border: 1px solid #d4d4d4; z-index: 1; text-align: center;">
-        <thead>
-            <tr>
-                <th scope="col">Case Number</th>
-                <th scope="col">Complainant Name</th>
-                <th scope="col">Respondent Name</th>
-                 <th scope="col">Complaint Category</th>
-                <th scope="col">Date of Incident</th>
-                <th scope="col">Special Case</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>';
-
-if ($stmt->rowCount() > 0) {
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-echo "<tr>
- <th scope='row'>" . htmlspecialchars($row["case_number"]) . "</th>
-<td>" . htmlspecialchars($row["complainant_name"]) . "</td>
-<td>" . htmlspecialchars($row["respondent_name"]) . "</td>
-<td>" . htmlspecialchars($row["complaint_category"]) . "</td>
-<td>" . htmlspecialchars($row["date_of_incident"]) . "</td>
-<td>" . htmlspecialchars($row["special_case"]) . "</td>
-<td>
-    <button type='submit' class='btn btn-success btn-hover' style='font-weight: 500;'>See details</button>
-    <button type='submit' class='btn btn-danger btn-hover' style='font-weight: 500;'>Forward</button>
-</td>
-</tr>";
+    try {
+        $stmt = $pdo->query($sql); 
+    } catch (PDOException $e) {
+        echo "Query failed: " . $e->getMessage();
+        exit; 
     }
-} else {
-    echo "<tr><td colspan='6'>No table record</td></tr>";
-}
-echo '</tbody></table>';
-$pdo = null; 
-?>
 
-            </div>
+    echo '<table id="tablecase" class="table table-bordered" style="width: 100%; max-width: 1500px; border: 1px solid #d4d4d4; text-align: center; margin-top: 150px; margin-left: 400px;"> 
+            <thead>
+                <tr>
+                    <th scope="col">Case Number</th>
+                    <th scope="col">Complainant Name</th>
+                    <th scope="col">Respondent Name</th>
+                    <th scope="col">Complaint Category</th>
+                    <th scope="col">Date of Incident</th>
+                    <th scope="col">Special Case</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>';
+
+    if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<tr>
+            <th scope='row'>" . htmlspecialchars($row["case_number"]) . "</th>
+            <td>" . htmlspecialchars($row["complainant_name"]) . "</td>
+            <td>" . htmlspecialchars($row["respondent_name"]) . "</td>
+            <td>" . htmlspecialchars($row["complaint_category"]) . "</td>
+            <td>" . htmlspecialchars($row["date_of_incident"]) . "</td>
+            <td>" . htmlspecialchars($row["special_case"]) . "</td>
+            <td>
+                <button type='submit' class='btn btn-success btn-hover' style='font-weight: 500;'>See details</button>
+                <button type='submit' class='btn btn-danger btn-hover' style='font-weight: 500;'>Forward</button>
+            </td>
+            </tr>";
+        }
+    } else {
+        echo "<tr><td colspan='7'>No table record</td></tr>";
+    }
+    echo '</tbody></table>';
+    $pdo = null; 
+    ?>
+</div>
+
+
+
         </section>
 
 <!-- new complaint section -->
 <section id="newcomplaintsection" style="display: none;">
             
 
-<div style="position: relative; height: 130px; width: 100%; top: -50px; border: 1px solid #d4d4d4; background-color: #ffffff;">
-                <h1 style="position: absolute; top: 35px; left: 21%;">NEW COMPLAINT</h1>
+    <div style="position: relative; top: 0; left: 0; height: 104px; width: 100%; border: 1px solid #d4d4d4; background-color: #ffffff; display: flex; align-items: center; padding-left: 20%; ">
+        <h1 style="font-size: 2rem;">NEW COMPLAINT</h1>
+    </div>
+    
+    
+    
+    <div style="margin-top: 13px; padding: 20px; height: 180vh; width: 100%; box-sizing: border-box; background-color: #ffffff;">
+        <form action="../../../../../controllers/departments/BPSO/complaint.php" method="POST" style="max-width: 1200px; margin: 0 auto;">
+    
+            <!-- Complainant Section -->
+            <div style="display: flex; justify-content: space-between; gap: 20px; margin-bottom: 30px;">
+                <!-- Complainant Section -->
+                <div style="flex: 1;">
+                    <label style="font-size: 20px; font-weight: 600;">Complainant 1</label>
+                    <div  id="complainant-container" style="display: flex; flex-direction: column; gap: 10px;">
+                        <input type="text" name="complainant_name" placeholder="Name" style="padding: 15px; font-size: 1rem; height: 50px; width: 100%; max-width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+                        <input type="text" name="complainant_address" placeholder="Address" style="padding: 15px; font-size: 1rem; height: 50px; width: 100%; max-width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+                    </div>
+                    <button type="button" onclick="addComplainant()" style="margin-top: 10px; font-size: 20px; background-color: #009717; color: #ffffff; border-radius: 50%; width: 30px; height: 30px; display: inline-flex; justify-content: center; align-items: center;">+</button>
+                </div>
+            
+                <!-- Respondent Section -->
+                <div style="flex: 1; margin-right: 0%; max-width: 400px;">
+                    <label style="font-size: 20px; font-weight: 600;">Respondent 1</label>
+                    <div id="respondent-container" style="display: flex; flex-direction: column; gap: 10px;">
+                        <input type="text" name="respondent_name" placeholder="Name" style="padding: 15px; font-size: 1rem; height: 50px; width: 100%; max-width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+                        <input type="text" name="respondent_address" placeholder="Address" style="padding: 15px; font-size: 1rem; height: 50px; width: 100%; max-width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+                    </div>
+                    <button type="button" onclick="addRespondent()" style="margin-top: 10px; font-size: 20px; background-color: #009717; color: #ffffff; border-radius: 50%; width: 30px; height: 30px; display: inline-flex; justify-content: center; align-items: center;">+</button>
+                </div>
+            </div>
+            
+            
+            
+    
+            <!-- Complaint Category Dropdown -->
+            <div style="margin-top: 300px; display: flex; justify-content: flex-start; margin-left: 0%;">
+                <input type="hidden" name="complaint_category" id="hiddenCategory" value="">
+                <button id="dropdowncategory" class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%; max-width: 400px; height: 50px; font-size: 1rem; background-color: #ffffff; border: 1px solid #b1b1b1;">
+                    Case Type
+                </button>
+                <ul class="dropdown-menu" style="position: absolute; top: 100%; left: 0; width: 100%; max-width: 400px;">
+                    <li type="button" onclick="updateButtonText('Minor case', 'dropdowncategory', event)" class="dropdown-item" style="cursor: pointer;">Minor case</li>
+                    <li type="button" onclick="updateButtonText('Major case', 'dropdowncategory', event)" class="dropdown-item" style="cursor: pointer;">Major case</li>
+                </ul>
+            </div>
+    
+            <!-- Complaint Description -->
+            <div style= "margin-top: 300px; margin-bottom: 30px;">
+                <label for="complaint-description">Ilagay ang iyong reklamo:</label>
+                <textarea id="complaint-description" name="complaint_description" placeholder="Complaint description..." style="width: 100%; height: 300px; max-width: 1200px; border: 1px solid #b1b1b1; border-radius: 3px; padding: 15px; font-size: 1rem;"></textarea>
+            </div>
+    
+            <!-- Place of Incident and Date/Time -->
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: -600px;">
+                <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                    <label for="place-of-incident">Place of Incident:</label>
+                    <input type="text" id="place-of-incident" name="place_of_incident" placeholder="Place of Incident..." style="width: 100%; padding: 13px; font-size: 1rem; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+                </div>
             </div>
 
-            <div style="position: absolute; top: 114px; bottom: 0; height: 1350px; width: 100%; border: 1px solid #d4d4d4; background-color: #ffffff;">
+            <div style="display: flex; justify-content: flex-end; gap: 150px; ">
+               <div style="min-width: 400px; max-width: 400px; position: relative; top: -220px; left: 550px; ">
+                 <label for="incidence-date">Incident Date:</label>
+               <input type="date" id="incidence-date" name="incidence_date" style=" width: 100%; padding: 13px; font-size: 1rem; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+         </div>
 
-
-    <form action="../../../../../controllers/departments/BPSO/complaint.php" method="POST">
-
-        <!-- complainant-->
-        <label style="position: absolute; top: 50px; left: 450px; font-size: 20px; font-weight: 600;">Complainant 1</label>
-        <div id="complainant-container" style="position: absolute; left: 22%; top: 100px;">
-            <input type="text" name="complainant_name" placeholder="Name" style="padding: 15px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;">
-            <input type="text" name="complainant_address" placeholder="Address" style="padding: 13px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;">
+        <div style="position: relative; top: -70px; min-width: 400px; max-width: 400px;">
+           <label for="incidence-time">Incident Time:</label>
+           <input type="time" id="incidence-time" name="incidence_time" style="width: 100%; padding: 13px; font-size: 1rem; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
         </div>
-        <button type="button" id="add-button" onclick="addComplainant()" style="position: absolute; top: 230px; left: 22%; font-size: 20px; background-color: #009717; color: #ffffff; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; justify-content: center; align-items: center;">+</button>
-        
-        <!-- Respondent Section -->
-        <label style="position: absolute; top: 50px; right: 460px; font-size: 20px; font-weight: 600;">Respondent 1</label>
-        <div id="respondent-container" style="position: absolute; right: 10%; top: 100px;">
-            <input type="text" name="respondent_name" placeholder="Name" style="padding: 15px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;">
-            <input type="text" name="respondent_address" placeholder="Address" style="padding: 13px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;">
-        </div>
-        <button type="button" id="add-buttons" onclick="addRespondent()" style="position: absolute; top: 230px; right: 29%; font-size: 25px; background-color: #009717; color: #ffffff; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; justify-content: center; align-items: center;">+</button>
-        
-        <!-- complaint category-->
-        <div class="dropdown" style="position: relative; display: flex; justify-content: center; align-items: center; height: 200px; top: 450px; left: -18%;">
-    <input type="hidden" name="complaint_category" id="hiddenCategory" value=""> <!-- Hidden input for complaint category -->
-    <button id="dropdowncategory" class="btn btn-info dropdown-toggle btn-hover" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="position: relative; font-weight: 500; display: block; width: 390px; height: 50px; font-size: 20px; background-color: #ffffff; border: 1px solid #b1b1b1; z-index: 2;">
-        Case Type
-    </button>
-    
-    <ul class="dropdown-menu" style="z-index: 2; position: absolute; top: 100%; left: 0;">
-        <li type="button" onclick="updateButtonText('Minor case', 'dropdowncategory', event)" class="dropdown-item" style="cursor: pointer;">Minor case</li>
-        <li type="button" onclick="updateButtonText('Major case', 'dropdowncategory', event)" class="dropdown-item" style="cursor: pointer;">Major case</li>
-    </ul>
-</div>
-        
-    
-        <label for="complaint-description">Ilagay ang iyong reklamo:</label>
-        <textarea id="complaint-description" name="complaint_description" placeholder="Complaint description..." style="position: relative; left: 12%; top: 570px; height: 300px; width: 1350px; border: 1px solid #b1b1b1; border-radius: 3px; padding: 15px; font-size: 20px;"></textarea>
-    
-        <input type="text" id="complainantincident" name="place_of_incident" placeholder="Place of Incidence..." style="position: absolute; left: 445px; top: 635px; padding: 13px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
-        
-        <input type="date" id="dateincidence" name="incidence_date" style="position: absolute; right: 10%; top: 635px; padding: 13px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
-       
-        <input type="time" name="incidence_time" style="position: absolute; right: 10%; top: 530px; padding: 13px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
-    
-        <button type="button" id="openModalButton" class="btn btn-primary btn-hover" style="position: relative; font-weight: 500; right: 45px; top: 720px; width: 300px; height: 60px; font-weight: 600; font-size: 20px;">Confirm</button>
-    
-        <div class="dropdowns" style="position: relative; display: flex; justify-content: center; align-items: center; height: 200px; top: 590px; left: -18%;">
-            <input type="hidden" name="special_case" id="hiddenSpecialCase" value="">
-            <button id="specialcasedrop" class="btn btn-info dropdown-toggle btn-hover" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="position: relative; font-weight: 500; display: block; width: 390px; height: 50px; font-size: 20px; background-color: #ffffff; border: 1px solid #b1b1b1; z-index: 2;">
-                Special Case Involved
-            </button>
+       </div>
+
             
-            <ul class="dropdown-menu" style="z-index: 2; position: absolute; top: 100%; left: 0;">
-                <li type="button" onclick="updateButtonText('BCPC', 'specialcasedrop', event)" class="dropdown-item" style="cursor: pointer;">BCPC</li>
-                <li type="button" onclick="updateButtonText('BADAC', 'specialcasedrop', event)" class="dropdown-item" style="cursor: pointer;">BADAC</li>
-                <li type="button" onclick="updateButtonText('None', 'specialcasedrop', event)" class="dropdown-item" style="cursor: pointer;">None</li>
-            </ul>
-        </div>
+            
+            
+            
+            
+    
+            <!-- Confirm Button -->
+            <div style="margin-top: 600px; margin-left: 80%;">
+            <button type="button" id="openModalButton" class="btn btn-primary" style="width: 100%; max-width: 300px; height: 60px; font-size: 1rem; font-weight: 600; margin: 0 auto; display: block;">Confirm</button>
+    
+            </div>
+
+            <!-- Special Case Dropdown -->
+            <div style="margin-top: -55px; display: flex; justify-content: flex-start; margin-left: 0%;">
+                <input type="hidden" name="special_case" id="hiddenSpecialCase" value="">
+                <button id="specialcasedrop" class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%; max-width: 400px; height: 50px; font-size: 1rem; background-color: #ffffff; border: 1px solid #b1b1b1;">
+                    Special Case Involved
+                </button>
+                <ul class="dropdown-menu" style="position: absolute; top: 100%; left: 0; width: 100%; max-width: 400px;">
+                    <li type="button" onclick="updateButtonText('BCPC', 'specialcasedrop', event)" class="dropdown-item" style="cursor: pointer;">BCPC</li>
+                    <li type="button" onclick="updateButtonText('BADAC', 'specialcasedrop', event)" class="dropdown-item" style="cursor: pointer;">BADAC</li>
+                    <li type="button" onclick="updateButtonText('None', 'specialcasedrop', event)" class="dropdown-item" style="cursor: pointer;">None</li>
+                </ul>
+            </div>
     
     
         <div id="report-create" class="create">
