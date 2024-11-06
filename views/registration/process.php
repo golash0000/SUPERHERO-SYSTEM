@@ -1,98 +1,51 @@
 <?php
 session_start();
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once '../../controllers/db_connection.php'; // Ensure this path is correct for your setup
+require_once '../../vendor/autoload.php'; // Include Composer's autoloader if needed for any dependencies
 
-// STANDARD (DON'T MAKE ANY CHANGES)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the email from the form
+    $email = trim($_POST['email']);
 
-// Use .env for hiding confidential info.
-use Dotenv\Dotenv;
-
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
-$dotenv->load();
-
-$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/templates');
-$twig = new \Twig\Environment($loader);
-
-// Do your random math HAHAHA
-function generateAccountId() {
-    return rand(10000000000, 99999999999);
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!isset($_SESSION['first_name'])) {
-        // Store session data from the first step
-        $_SESSION['first_name'] = $_POST['first_name'];
-        $_SESSION['last_name'] = $_POST['last_name'];
-        $_SESSION['email'] = $_POST['email'];
-
-        echo $twig->render('signup.twig', [
-            'first_name' => $_SESSION['first_name'],
-            'last_name' => $_SESSION['last_name'],
-            'email' => $_SESSION['email'],
-            'password' => '',  
-            'account_user_type' => '',
-        ]);
-        exit();
-    } else {
-        $_SESSION['password'] = $_POST['password'];
-        $_SESSION['account_user_type'] = $_POST['account_user_type'];
-
-        // Hash the password using SHA-256
-        $hashed_password = hash('sha256', $_SESSION['password']);
-
-        // Generate the brgy_account_id
-        $brgy_account_id = generateAccountId();
-
-        // Prepare data for AWS API
-        $data = [
-            'brgy_password' => $_SESSION['password'],
-            'brgy_password_hashed' => $hashed_password,
-            'brgy_email' => $_SESSION['email'],
-            'brgy_firstName' => $_SESSION['first_name'],
-            'brgy_lastName' => $_SESSION['last_name'],
-            'brgy_account_id' => $brgy_account_id,
-            'brgy_account_user_type' => $_SESSION['account_user_type'],
-        ];
-
-        // Send POST request to AWS API (Security-measured)
-        $url = $_ENV['AWS_API_URL'];
-        
-        $options = [
-            'http' => [
-                'header'  => "Content-type: application/json\r\n",
-                'method'  => 'POST',
-                'content' => json_encode($data),
-            ],
-        ];
-        
-        $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        
-        if ($result === FALSE) {
-            echo "Error during registration.";
-            exit();
-        }
-
-        // Clear session data if needed
-        session_unset(); 
-        session_destroy();
-        
-        // Load the success page template
-        echo $twig->render('success_page.twig');
+    // Check if email is provided
+    if (empty($email)) {
+        echo "Error: Email is required.";
         exit();
     }
-}
 
-// Render the signup.twig template for the second step
-if (isset($_SESSION['first_name'])) {
-    echo $twig->render('signup.twig', [
-        'first_name' => $_SESSION['first_name'],
-        'last_name' => $_SESSION['last_name'],
-        'email' => $_SESSION['email'],
-        'password' => '', 
-        'account_user_type' => '',
-    ]);
+    // Generate OTP and set the current timestamp
+    $otp = rand(1000, 9999);
+    $otp_sent_at = date('Y-m-d H:i:s');
+
+    // Check if the 'bms_account_portal' database connection is available
+    if (isset($databaseConnections['bms_account_portal'])) {
+        $db = $databaseConnections['bms_account_portal'];
+
+        try {
+            // Insert OTP request into the `brgy_user_registration_process` table
+            $stmt = $db->prepare("INSERT INTO brgy_user_registration_process (email, otp, otp_sent_at) VALUES (?, ?, ?)");
+            $stmt->execute([$email, $otp, $otp_sent_at]);
+
+            // Store the OTP and email in the session for verification
+            $_SESSION['otp'] = $otp;
+            $_SESSION['email'] = $email;
+            $_SESSION['otp_step_in_progress'] = true; // Flag to track OTP step
+
+            // Redirect to OTP verification page
+            header('Location: verification-code.php');
+            exit();
+        } catch (PDOException $e) {
+            // Handle potential database errors
+            echo "Database error: " . $e->getMessage();
+            exit();
+        }
+    } else {
+        // Handle case where the database connection isn't available
+        echo "Error: Could not connect to the database.";
+        exit();
+    }
 } else {
+    // If accessed directly, redirect to signup page
     header('Location: signup.php');
     exit();
 }
