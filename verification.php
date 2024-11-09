@@ -20,11 +20,11 @@ function getTemplatePath($userType) {
     $paths = [
         'super_admin' => 'views/dashboard/super_admin/templates/pages/dashboard.php',
         'head_admin' => 'views/dashboard/head_admin/templates/pages/dashboard.php',
-        'BADAC' => 'views/dashboard/departments/BADAC/templates/dashboard.php',
+        'BADAC' => 'views/dashboard/departments/BADAC/templates/dashboard.html',
         'BPSO' => 'views/dashboard/departments/BPSO/Dashboard main/bpso.php',
         'Admin1' => 'views/dashboard/departments/Admin1/templates/dashboard.php',
-        'Admin2' => 'views/dashboard/departments/Admin2/templates/dashboard.php',
-        'BCPC' => 'views/dashboard/departments/BCPC/templates/dashboard.php',
+        'Admin2' => 'views/dashboard/departments/Admin2/templates/dashboard/dashboard.twig',
+        'BCPC' => 'views/dashboard/departments/BCPC/dashboard.html',
         'LUPON' => 'views/dashboard/departments/LUPON/templates/dashboard.php'
     ];
     return $paths[$userType] ?? null;
