@@ -55,22 +55,24 @@ function addComplainant() {
 }
 
 //  add button para sa Respondent
+function addComplainant() {
+    const container = document.getElementById('complainant-container');
+    const newComplainant = `
+        <input type="text" name="complainant_name[]" placeholder="Name" style="padding: 15px; font-size: 1rem; height: 50px; width: 100%; max-width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+        <input type="text" name="complainant_address[]" placeholder="Address" style="padding: 15px; font-size: 1rem; height: 50px; width: 100%; max-width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+    `;
+    container.insertAdjacentHTML('beforeend', newComplainant);
+}
+
 function addRespondent() {
     const container = document.getElementById('respondent-container');
-    const nameInput = document.createElement('input');
-    nameInput.type = 'text';
-    nameInput.placeholder = 'Name';
-    nameInput.style.cssText = 'padding: 15px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;';
-    const addressInput = document.createElement('input');
-    addressInput.type = 'text';
-    addressInput.placeholder = 'Address';
-    addressInput.style.cssText = 'padding: 13px; font-size: 20px; height: 50px; width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff; display: block; margin-bottom: 10px;';
-    container.appendChild(nameInput);
-    container.appendChild(addressInput);
-    const button = document.getElementById('add-buttons');
-    const totalInputs = container.children.length;
-    button.style.top = (100 + totalInputs * 60) + 'px'; 
+    const newRespondent = `
+        <input type="text" name="respondent_name[]" placeholder="Name" style="padding: 15px; font-size: 1rem; height: 50px; width: 100%; max-width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+        <input type="text" name="respondent_address[]" placeholder="Address" style="padding: 15px; font-size: 1rem; height: 50px; width: 100%; max-width: 400px; border-radius: 3px; border: 1px solid #d4d4d4; background-color: #ffffff;">
+    `;
+    container.insertAdjacentHTML('beforeend', newRespondent);
 }
+// dropdown ng button
 function updateButtonText(text, buttonId, event) {
     const button = document.getElementById(buttonId);
     button.textContent = text; 
