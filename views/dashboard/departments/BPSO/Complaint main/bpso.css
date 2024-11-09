@@ -1,6 +1,23 @@
-@media (max-width: 768px) {
-   
+.category-link {
+    text-decoration: none;
+    color: inherit
 }
+
+
+.sidebar-submenu-item {
+    display: block;
+    text-decoration: none;
+    padding: 8px 0; 
+   
+    padding-left: 20px
+}
+
+#report-create {
+    display: none;
+}
+
+
+
 
 
 
@@ -24,6 +41,12 @@
     display: none; 
     z-index: 2000; 
 }
+
+/* Modal complaint styling */
+
+
+
+/* Modal case number styling */
 .create-content {
     position: absolute;
     background-color: white;
@@ -57,3 +80,14 @@
     background: linear-gradient(45deg, #7bfc7b, #ec7777); 
     color: rgb(83, 83, 83);
 }
+
+
+
+
+  
+
+
+
+
+  
+  
