@@ -6,6 +6,7 @@ if (isset($_SESSION['message'])) {
     echo '<div class="alert alert-info">' . $_SESSION['message'] . '</div>';
     unset($_SESSION['message']);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@ if (isset($_SESSION['message'])) {
         <section id="login-container" class="d-none d-md-flex align-items-center justify-content-center vh-100">
             <div class="login-wrapper">
                 <div class="login-header">
-                    <h1 class="text-dark">Sign In</h1>
+                    <h1 class="text-dark">Login</h1>
                     <p class="text-muted">Enter your credentials.</p>
                 </div>
                 <form method="post" action="verification.php">
@@ -61,11 +62,11 @@ if (isset($_SESSION['message'])) {
         </section>
 
         <!-- show test user creds ^^ -->
-        <div class="principal-author">
+        <!-- <div class="principal-author">
             <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#infoModal">
                 Try this out.
             </button>
-        </div>
+        </div> -->
         
         <!-- Modal Structure -->
         <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">

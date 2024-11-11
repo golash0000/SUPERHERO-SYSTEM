@@ -20,6 +20,12 @@ composer require twig/twig
 composer require vlucas/phpdotenv
 ```
 
+### 2.1 New Libraries
+
+```powershell
+composer require google/apiclient
+```
+
 ### 2.2 Tutorial (Simple)
 
 1. In XAMPP inside Apache open `Config` then Open your httpd.conf usually locates in `C:\xampp\apache\conf\httpd.conf` directory

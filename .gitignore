@@ -18,8 +18,10 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Ignore environment configuration files
+# Ignore environment configuration files including Gmail API
+google-gmail-api.json
 .env
+tmp/
 
 # Ignore backup and temporary files
 *.bak

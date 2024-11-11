@@ -1,5 +1,3 @@
-<!-- CUSTOM PROGRAM (FEEL FREE TO CHANGE IT) -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,14 +11,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/css/perfect-scrollbar.css">
     <link href="../../../../../custom/css/index.css" rel="stylesheet">
     <link rel="icon" href="../../dist/images/favicon.ico" type="image/x-icon">
-    <!-- Open Graph Meta Tags -->
+    <link rel="stylesheet" href="../Complaint main/bpso.css">
     <meta property="og:title" content="Onboarding as BPSO Officer for Brgy. Management">
     <meta property="og:description" content="Still in development phase.">
     <meta property="og:image" content="URL_to_your_image.jpg">
     <meta property="og:url" content="https://yourwebsite.com">
     <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Onboarding as BPSO Officer for Brgy. Management">
     <meta name="twitter:description" content="Still in development phase.">
@@ -30,29 +26,57 @@
 
 <body>
     <div id="app">
-        <nav class="sidebar">
+        <nav class="sidebar" style="z-index: 1000;">
             <div class="sidebar-content">
                 <div class="sidebar-header">Brgy. Sta. Lucia</div>
-    
-    
                 <div class="sidebar-category">
-                    <div class="sidebar-category-header">
+                   <div class="sidebar-category-header">
+                    <a href="http://localhost:3000/views/dashboard/departments/BPSO/Dashboard/dashboard.php" class="category-link" style="text-decoration: none; color: inherit;">
+                      <span><i class="fa-solid fa-desktop category-icon"></i>Dashboard</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="sidebar-category">
+                    <div class="sidebar-category-header" onclick="toggleSubMenu()">
                         <span><i class="fas fa-shield-alt category-icon"></i>Brgy. Public Safety Officer</span>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     <div class="sidebar-submenu-show">
-                        <div class="sidebar-submenu-item">Blank 1</div>
-                        <div class="sidebar-submenu-item">Blank 2</div>
-                        <div class="sidebar-submenu-item">Blank 3</div>
+                        <a href="http://localhost:3000/views/dashboard/departments/BPSO/Complaint%20main/complaints.php" class="sidebar-submenu-item" onclick="showSection('complaintsection')">Complaints</a>
+                        <a href="http://localhost:3000/views/dashboard/departments/BPSO/Complaint%20main/newcomplaint.php" class="sidebar-submenu-item" onclick="showSection('newcomplaintsection')">New Complaint</a>
+                        <a href="http://localhost:3000/views/dashboard/departments/BPSO/Complaint%20main/report.php" class="sidebar-submenu-item" onclick="showSection('reportsection')">Create Report</a>
                     </div>
                 </div>
-    
+                <div class="sidebar-category">
+                    <div class="sidebar-category-header">
+                    <a href="http://localhost:3000/views/dashboard/departments/BPSO/Team%20Schedule/teamschedule.php" class="category-link" style="text-decoration: none; color: inherit;">
+                        <span><i class="fa-solid fa-calendar category-icon"></i>Team Schedule</span>
+                    </a>
+                    </div>
+                </div>
+                <div class="sidebar-category">
+                    <div class="sidebar-category-header">
+                    <a href="http://localhost:3000/views/dashboard/departments/BPSO/Vehicle%20Dispatchment/vehicle.php" class="category-link" style="text-decoration: none; color: inherit;">
+                        <span><i class="fa-solid fa-truck category-icon"></i>Vehicle Dispatchment</span>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-category">
+                    <div class="sidebar-category-header">
+                    <a href="http://localhost:3000/views/dashboard/departments/BPSO/Notification/notification.php" class="category-link" style="text-decoration: none; color: inherit;">
+                    <span><i class="fa-solid fa-bell category-icon"></i>Notification</span>
+                    </a>
+
+                    </div>
+                </div>
+
+
                 <div class="sidebar-category">
                     <div class="sidebar-category-header">
                         <span><i class="fa-solid fa-id-card category-icon"></i>User Profile</span>
                     </div>
                 </div>
-
                 <div class="sidebar-category">
                     <div class="sidebar-category-header" data-bs-toggle="modal" data-bs-target="#signOutModal">
                         <span><i class="fa-solid fa-door-open category-icon"></i>Sign Out</span>
@@ -61,7 +85,45 @@
             </div>
         </nav>
 
-         <!-- Sign Out Confirmation Modal -->
+        <div style="position: relative; top: 0; left: 0; height: 104px; width: 100%; border: 1px solid #d4d4d4; background-color: #ffffff; display: flex; align-items: center; padding-left: 20%; ">
+                <h1 style="font-size: 2rem;">GENERATE REPORT</h1>
+            </div>
+            <div style="margin-top: 13px; padding: 20px; min-height: 100vh; width: 100%; box-sizing: border-box; background-color: #ffffff; display: flex; flex-direction: column; align-items: flex-start;">
+
+
+            <div style="display: flex; justify-content: center; align-items: center; margin-top: 120px; margin-bottom: 30px;">
+            <div style="width: 100%; max-width: 2500px; margin-left: 430px;">
+       
+        <textarea id="generatedescription" name="complaint_description" placeholder="Report description..." 
+            style="width: 100%; width: 420%; height: 50vh; border: 1px solid #b1b1b1; border-radius: 3px; padding: 15px; font-size: 1rem; box-sizing: border-box;">
+        </textarea>
+     </div>
+  </div>
+
+
+  <div style=" margin-left: 970px; margin-top: 5px; display: flex; gap: 30px;">
+  <button id="printButton" 
+                style="font-weight: 500; width: 200px; height: 50px; border-radius: 3px; border: 1px solid #b1b1b1; 
+                       display: flex; justify-content: center; align-items: center; text-decoration: none; 
+                       color: white; background-color: #007bff;">
+            PRINT
+        </button>
+
+    <a href="http://localhost:3000/views/dashboard/departments/BPSO/Complaint%20main/report.php" id="backbutton" class="btn btn-primary btn-hover" 
+        style="font-weight: 500; width: 200px; height: 50px; border-radius: 3px; border: 1px solid #b1b1b1; 
+        display: flex; justify-content: center; align-items: center; text-decoration: none; color: white; background-color: #007bff;">
+        BACK
+    </a>
+</div>
+
+
+
+
+</div>
+
+
+                
+        <!-- Sign Out Confirmation Modal -->
          <div class="modal fade" id="signOutModal" tabindex="-1" aria-labelledby="signOutModalLabel" aria-hidden="true"
          data-bs-backdrop="static" data-bs-keyboard="false">
          <div class="modal-dialog modal-dialog-centered"> <!-- Added modal-dialog-centered here -->
@@ -81,6 +143,8 @@
              </div>
          </div>
      </div>
+
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/dist/perfect-scrollbar.min.js"></script>
@@ -141,7 +205,26 @@
         // Redirect to signout.php to handle session destruction and redirection
         window.location.href = '../../../../../signout.php';
     });
+
+
+   
+    
+        document.getElementById('printButton').addEventListener('click', function() {
+            const { jsPDF } = window.jspdf;  
+            var doc = new jsPDF();
+            var textContent = document.getElementById('generatedescription').value;  
+
+            doc.text(textContent, 10, 10);  
+            doc.save('generate.pdf');
+        });
+
+
     </script>
+
+    <script src="../Complaint main/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    
 </body>
 
 </html>

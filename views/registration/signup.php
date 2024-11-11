@@ -2,6 +2,29 @@
 
 <?php
 session_start();
+require_once '../../controllers/db_connection.php'; // Ensure this path is correct for your setup
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the email from the form
+    $email = trim($_POST['email']);
+    
+    // Check if email is provided
+    if (empty($email)) {
+        echo "Error: Email is required.";
+        exit();
+    }
+    
+    // Generate a unique account ID
+    $account_id = uniqid();
+
+    // Store email and account ID in session for later use
+    $_SESSION['email'] = $email;
+    $_SESSION['account_id'] = $account_id; // Save account ID
+
+    // Redirect to the process.php for OTP handling
+    header("Location: process.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,140 +58,99 @@ session_start();
 
 <body>
     <div id="app">
-    <section id="login-container" class="d-flex align-items-center justify-content-center vh-100">
-        <div class="login-wrapper">
-            <div class="login-header">
-                <h1 class="text-dark">Sign Up</h1>
-                <p class="text-muted">New User? Provide all input fields we need.</p>
-            </div>
-            <form id="signup-form" method="POST" action="process.php" onsubmit="return validateForm()">
-                <div class="mb-2">
-                    <label for="first_name" class="form-label">First name</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo isset($_SESSION['first_name']) ? $_SESSION['first_name'] : ''; ?>" required>
+        <section id="login-container" class="d-flex align-items-center justify-content-center vh-100">
+            <div class="login-wrapper">
+                <div class="login-header">
+                    <h1 class="text-dark">Sign Up</h1>
+                    <p class="text-muted">This registration is for Brgy. Staffs and Residents</p>
                 </div>
-                <div class="mb-2">
-                    <label for="last_name" class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo isset($_SESSION['last_name']) ? $_SESSION['last_name'] : ''; ?>" required>
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" required>
-                </div>
-                <button type="submit" class="btn btn-danger w-100 mb-3" id="register-button">Proceed</button>
-                <button type="button" class="btn btn-light w-100" id="signInButton" data-bs-toggle="modal" data-bs-target="#confirmModal">Sign In</button>
-            </form>
+                <form id="signup-form" method="POST" action="process.php" onsubmit="return validateForm()">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="hidden" name="account_id" value="<?php echo uniqid(); ?>"> <!-- Generates a unique ID -->
+                        <input type="email" class="form-control" id="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100 mb-3" id="register-button" disabled>Proceed</button>
+                    <button type="button" class="btn btn-light w-100" id="signInButton" data-bs-toggle="modal" data-bs-target="#confirmModal">Login</button>
+                </form>
 
-            <!-- Confirmation Modal -->
-            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true" data-bs-backdrop="static">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to go back to the Sign In page? Any unsaved data will be lost.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <form method="POST" action="clear_session.php">
-                                <button type="submit" class="btn btn-danger">Confirm</button>
-                            </form>
+                <!-- Redirect to Sign In Confirmation Modal -->
+                <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to go back to the Sign In page? Any unsaved data will be lost.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <form method="POST" action="clear_session.php">
+                                    <button type="submit" class="btn btn-danger">Confirm</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
+        </section>
 
-        </div>
-    </section>
-
-    <!-- Button to Trigger Modal -->
-    <!-- <div class="principal-author">
-        <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#loadingModal">
-            Try this out.
-        </button>
-    </div>
-
-    <div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body d-flex justify-content-center align-items-center" style="height: 200px;">
-                    <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-        <!-- The elligible rights to authorize software usage is limited -->
-        <!-- <div class="principal-author">
-            <span>This property are part of belongings to Brgy. Sta Lucia</span>
-        </div>
-    </div>-->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 
         <script>
-            // Attach event listener to restrict input to letters for the first and last name fields
-            document.getElementById('first_name').addEventListener('input', filterInput);
-            document.getElementById('last_name').addEventListener('input', filterInput);
+            document.getElementById('email').addEventListener('input', function() {
+                validateEmail(this);
+            });
 
+            // Validate email format
+            function validateEmail(input) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(input.value)) {
+                    input.classList.add('is-invalid');
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+                toggleRegisterButton();
+            }
+
+            // Enable or disable the register button based on validation
+            function toggleRegisterButton() {
+                const emailValid = !document.getElementById('email').classList.contains('is-invalid');
+                document.getElementById('register-button').disabled = !(emailValid);
+            }
+
+            // Handle form submission with final validation check
             function validateForm() {
-                const firstName = document.getElementById('first_name').value.trim();
-                const lastName = document.getElementById('last_name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                // Check for empty fields
-                if (firstName === '' || lastName === '' || email === '') {
-                    alert('Please fill out all input fields before proceeding.');
+                const email = document.getElementById('email');
+                // Final validation: prevent submission if invalid
+                if (email.value.trim() === '' || email.classList.contains('is-invalid')) {
                     return false;
                 }
-
-                // Validate first name (minimum 2 characters)
-                if (firstName.length < 2) {
-                    alert('First name must contain at least 2 letters.');
-                    return false;
-                }
-
-                // Validate last name (minimum 2 characters)
-                if (lastName.length < 2) {
-                    alert('Last name must contain at least 2 letters.');
-                    return false;
-                }
-
-                // Validate email format
-                if (!emailRegex.test(email)) {
-                    alert('Please enter a valid email address.');
-                    return false;
-                }
-
                 return true;
             }
 
-            function filterInput(event) {
-                const regex = /[^A-Za-z]/g;
-                if (regex.test(event.target.value)) {
-                    event.target.value = event.target.value.replace(regex, '');
-                }
-            }
-
-            // Add event listener to Sign In button
+            // Handle Sign In button click with conditional modal display or redirection
             document.getElementById('signInButton').addEventListener('click', function() {
-                var firstName = document.getElementById('first_name').value;
-                var lastName = document.getElementById('last_name').value;
-                var email = document.getElementById('email').value;
+                const email = document.getElementById('email').value.trim();
 
-                // Check if all fields are empty
-                if (firstName === '' && lastName === '' && email === '') {
-                    window.location.href = '../../';
+                if (email === '') {
+                    // Redirect directly if both fields are empty
+                    window.location.href = 'clear_session.php';
+                } else {
+                    // Show modal if there’s unsaved data
+                    const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+                    confirmModal.show();
                 }
             });
         </script>
 
 
+
 </body>
+
 </html>
