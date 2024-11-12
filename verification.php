@@ -1,14 +1,7 @@
 <?php
 session_start();
 require_once './vendor/autoload.php';
-
-// Initialize Twig with the correct loader path
-$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/views');
-$twig = new \Twig\Environment($loader);
-
-// Get email and password from form submission
-$email = $_POST['email'];
-$password = $_POST['password'];
+require_once './controllers/db_connection.php'; // Include the database connection
 
 // Define user credentials and types
 $userCredentials = [
@@ -22,51 +15,104 @@ $userCredentials = [
     ['email' => 'test_user@lupon.ph', 'password' => 'kenneth', 'user_type' => 'LUPON']
 ];
 
-// Check credentials and set the user type
-$userType = null;
-foreach ($userCredentials as $user) {
-    if ($user['email'] === $email && $user['password'] === $password) {
-        $userType = $user['user_type'];
-        $_SESSION['user_type'] = $userType;
-        break;
-    }
-}
-
 // Function to fetch the template path based on user type
 function getTemplatePath($userType) {
     $paths = [
-        'super_admin' => 'views/dashboard/super_admin/templates/dashboard.twig',
-        'head_admin' => 'views/dashboard/head_admin/templates/dashboard.twig',
-        'BADAC' => 'views/dashboard/departments/BADAC/templates/home.html',
-        'BPSO' => 'views/dashboard/departments/BPSO/templates/dashboard.twig',
-        'Admin1' => 'views/dashboard/departments/Admin1/templates/dashboard.twig',
+        'super_admin' => 'views/dashboard/super_admin/templates/pages/dashboard.php',
+        'head_admin' => 'views/dashboard/head_admin/templates/pages/dashboard.php',
+        'BADAC' => 'views/dashboard/departments/BADAC/templates/dashboard.html',
+        'BPSO' => 'views/dashboard/departments/BPSO/Dashboard/dashboard.php',
+        'Admin1' => 'views/dashboard/departments/Admin1/templates/dashboard.php',
         'Admin2' => 'views/dashboard/departments/Admin2/templates/dashboard/dashboard.twig',
-        'BCPC' => 'views/dashboard/departments/BCPC/templates/dashboard.twig',
-        'LUPON' => 'views/dashboard/departments/LUPON/templates/dashboard.twig'
+        'BCPC' => 'views/dashboard/departments/BCPC/dashboard.html',
+        'LUPON' => 'views/dashboard/departments/LUPON/templates/dashboard.php'
     ];
     return $paths[$userType] ?? null;
 }
 
-// Check credentials and set the user type
-$userType = null;
-foreach ($userCredentials as $user) {
-    if ($user['email'] === $email && $user['password'] === $password) {
-        $userType = $user['user_type'];
-        $_SESSION['user_type'] = $userType;
-        break;
+// Check for form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get submitted email and password
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    // Fetch user from the database based on email
+    $dbConnections = getDatabaseConnections();
+    $stmt = $dbConnections['bms_account_portal']->prepare('SELECT * FROM brgy_admin_users WHERE brgy_email = :email');
+    $stmt->execute(['email' => $email]); 
+    $user = $stmt->fetch();
+
+    // Initialize userType variable
+    $userType = null;
+
+    if ($user) {
+        // Log the hashed password and input password for debugging
+        error_log("Hashed Password in DB: " . $user['brgy_password_hashed']);
+        error_log("Input Password: " . $password);
+
+        // Attempt to verify password using password_verify
+        $isPasswordValid = password_verify($password, $user['brgy_password_hashed']);
+
+        // If password_verify fails, check hardcoded credentials
+        if (!$isPasswordValid) {
+            foreach ($userCredentials as $hardcodedUser) {
+                if ($hardcodedUser['email'] === $email && $hardcodedUser['password'] === $password) {
+                    $userType = $hardcodedUser['user_type'];
+                    $_SESSION['user_type'] = $userType;
+                    $isPasswordValid = true; // Set as valid after matching hardcoded credentials
+                    break;
+                }
+            }
+        } else {
+            $userType = $user['user_type']; // Set user type from database
+            $_SESSION['user_type'] = $userType;
+        }
+
+        if ($isPasswordValid) {
+            // Set session variable for email
+            $_SESSION['email'] = $email;
+
+            // Check first_time_admin_user flag and redirect accordingly
+            if (strtolower($user['first_time_admin_user']) === 'yes') {
+                header('Location: views/confirmation/admin/new_user/onboard.php');
+                exit();
+            } else {
+                // Redirect to verification code page if first_time_admin_user is 'no'
+                header('Location: views/confirmation/admin/verification-code.php');
+                exit();
+            }
+        } else {
+            // Invalid password
+            $_SESSION['message'] = 'Invalid password. Please try again.';
+            header('Location: index.php'); // Redirect back to login page
+            exit();
+        }
+    } else {
+        // User not found, check hardcoded credentials
+        foreach ($userCredentials as $hardcodedUser) {
+            if ($hardcodedUser['email'] === $email && $hardcodedUser['password'] === $password) {
+                $userType = $hardcodedUser['user_type'];
+                $_SESSION['user_type'] = $userType;
+                $_SESSION['email'] = $email; // Set session variable for email
+                break;
+            }
+        }
+
+        if ($userType) {
+            // Get the template path based on user type
+            $templatePath = getTemplatePath($userType);
+            if ($templatePath) {
+                // Redirect to the appropriate template
+                header('Location: ' . $templatePath);
+                exit();
+            }
+        }
+
+        // Invalid credentials
+        $_SESSION['message'] = 'Invalid email or password. Please try again.';
+        header('Location: index.php'); // Redirect back to login page
+        exit();
     }
 }
+?>
 
-// First render verification page with loading spinner
-if ($userType && ($redirectUrl = getTemplatePath($userType))) {
-    echo $twig->render('dashboard/templates/verification.twig', [
-        'user_type' => ucfirst($userType),
-        'redirect_url' => $redirectUrl // Hidden from user, passed to frontend if needed
-    ]);
-    exit();
-} else {
-    // Invalid credentials or unknown user type
-    $_SESSION['message'] = 'Invalid email or password.';
-    header('Location: index.php'); // Redirect back to login page
-    exit();
-}

@@ -3,7 +3,8 @@
 /** import rules **/
 @import url("./modules/Login.module.css");
 @import url("./modules/superadmin/Sidebar.module.css");
-@import url("./modules/superadmin/Sidebar.module.css");
+@import url("./modules/superadmin/Authorization.module.css");
+@import url("./modules/superadmin/Overview.module.css");
 
 /** custom rules **/
 
