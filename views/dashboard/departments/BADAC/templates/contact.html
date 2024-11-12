@@ -143,7 +143,7 @@
                                                         <tr>    
                                                                 <td>Upload File:</td>
                                                                 <td>
-                                                                        <input type="file" style="width: 70%;"> <button class="btn" type="button" style="background-color: #2D9276; color: white;">Send</button>
+                                                                        
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -173,7 +173,10 @@
                                                         <tr>    
                                                                 <td>Upload File:</td>
                                                                 <td>
-                                                                        <input type="file" style="width: 70%;"> <button class="btn" type="button" style="background-color: #2D9276; color: white;">Send</button>
+                                                                        <form>
+                                                                                <input type="file" id="fileInput" style="width: 70%;"> 
+                                                                                <button class="btn" type="button" style="background-color: #2D9276; color: white;" onclick="sendFile()">Send</button>
+                                                                        </form>
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -339,6 +342,40 @@
         window.location.href = '../../../../../signout.php';
     });
     </script>
+
+    <script>
+        function sendFile() {
+          const fileInput = document.getElementById("fileInput");
+          const file = fileInput.files[0];
+    
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+              const fileContent = event.target.result;
+    
+              // Retrieve current files from localStorage or create an empty array
+              let filesArray = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+    
+              // Add new file details to the array
+              filesArray.push({
+                from: "BADAC",
+                description: file.name,
+                content: fileContent
+              });
+    
+              // Save updated array back to localStorage
+              localStorage.setItem("uploadedFiles", JSON.stringify(filesArray));
+    
+              // Alert user of success and clear the file input field
+              alert("File uploaded successfully!");
+              fileInput.value = "";  // Reset the file input field
+            };
+            reader.readAsDataURL(file);
+          } else {
+            alert("Please select a file.");
+          }
+        }
+     </script>
 </body>
 
 </html>
