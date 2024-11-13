@@ -119,7 +119,8 @@
                 <div class="contact-section container">
                         <div class="row d-flex justify-content-center" 
                              style="gap: 10px">
-                                <div class="card p-2">
+
+                                <div class="card p-3 shadow">
                                         <div class="card-title h4 text-center">
                                                 <img src="../../BADAC/templates/img/bcpc.png" alt="bcpcLogo" class="contact-logo img-fluid"> <span>BCPC</span>
                                         </div>
@@ -142,42 +143,14 @@
                                                         <tr>    
                                                                 <td>Upload File:</td>
                                                                 <td>
-                                                                        <input type="file" style="width: 70%;"> <button class="btn" type="button" style="background-color: #2D9276; color: white;">Send</button>
+                                                                        
                                                                 </td>
                                                         </tr>
                                                 </tbody>
                                         </table>
                                 </div>
-                                <div class="card p-2">
-                                        <div class="card-title h4 text-center">
-                                                <img src="../../BADAC/templates/img/bcpc.png" alt="bcpcLogo" class="contact-logo img-fluid"> <span>BPSO</span>
-                                        </div>
-                                        
-                                        <table class="table table-borderless">
-                                                
-                                                <tbody>
-                                                        <tr>
-                                                                <td>Address:</td>
-                                                                <td>Barangay Sta. Lucia, District V, Quezon City, Quezon City</td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td>Contact No:</td>
-                                                                <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td>Email:</td>
-                                                                <td></td>
-                                                        </tr>
-                                                        <tr>    
-                                                                <td>Upload File:</td>
-                                                                <td>
-                                                                        <input type="file" style="width: 70%;"> <button class="btn" type="button" style="background-color: #2D9276; color: white;">Send</button>
-                                                                </td>
-                                                        </tr>
-                                                </tbody>
-                                        </table>
-                                </div>
-                                <div class="card p-2">
+                                
+                                <div class="card p-3 shadow">
                                         <div class="card-title h4 text-center">
                                                 <img src="../../BADAC/templates/img/doh.webp" alt="dohLogo" class="contact-logo img-fluid"> <span>DOH</span>
                                         </div>
@@ -200,13 +173,17 @@
                                                         <tr>    
                                                                 <td>Upload File:</td>
                                                                 <td>
-                                                                        <input type="file" style="width: 70%;"> <button class="btn" type="button" style="background-color: #2D9276; color: white;">Send</button>
+                                                                        <form>
+                                                                                <input type="file" id="fileInput" style="width: 70%;"> 
+                                                                                <button class="btn" type="button" style="background-color: #2D9276; color: white;" onclick="sendFile()">Send</button>
+                                                                        </form>
                                                                 </td>
                                                         </tr>
                                                 </tbody>
                                         </table>
                                 </div>
-                                <div class="card p-2">
+
+                                <div class="card p-3 shadow">
                                         <div class="card-title h4 text-center">
                                                 <img src="../../BADAC/templates/img/pdea.webp" alt="pdeaLogo" class="contact-logo img-fluid"> <span>PDEA</span>
                                         </div>
@@ -227,15 +204,16 @@
                                                                 <td>pdea_cs@yahoo.com.ph</td>
                                                         </tr>
                                                         <tr>    
-                                                                <td>Upload File:</td>
-                                                                <td>
-                                                                        <input type="file" style="width: 70%;"> <button class="btn" type="button" style="background-color: #2D9276; color: white;">Send</button>
+                                                                <td></td>   
+                                                                <td> 
+                                                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pdea_cs@yahoo.com.ph" target="_blank" class="btn" type="button" style="background-color: #2D9276; color: white;">Send Message</a>
                                                                 </td>
                                                         </tr>
                                                 </tbody>
                                         </table>
                                 </div>
-                                <div class="card p-2">
+                                
+                                <div class="card p-3 shadow">
                                         <div class="card-title h4 text-center">
                                                 <img src="../../BADAC/templates/img/pnp.webp" alt="pnpLogo" class="contact-logo img-fluid"> <span>PNP</span>
                                         </div>
@@ -256,15 +234,16 @@
                                                                 <td>dc@pnp.gov.ph</td>
                                                         </tr>
                                                         <tr>    
-                                                                <td>Upload File:</td>
-                                                                <td>
-                                                                        <input type="file" style="width: 70%;"> <button class="btn" type="button" style="background-color: #2D9276; color: white;">Send</button>
+                                                                <td></td>   
+                                                                <td> 
+                                                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pdea_cs@yahoo.com.ph,dc@pnp.gov.ph" target="_blank" class="btn" type="button" style="background-color: #2D9276; color: white;">Send Message</a>
                                                                 </td>
                                                         </tr>
                                                 </tbody>
                                         </table>
                                 </div>
-                                <div class="card p-2">
+
+                                <div class="card p-3 shadow">
                                         <div class="card-title h4 text-center">
                                                 <img src="../../BADAC/templates/img/DILG.webp" alt="dilgLogo" class="contact-logo img-fluid"> <span>DILG</span>
                                         </div>
@@ -285,10 +264,10 @@
                                                                 <td>jcremulla@dilg.gov.ph
                                                                     </td>
                                                         </tr>
-                                                        <tr>    
-                                                                <td>Upload File:</td>
-                                                                <td>
-                                                                        <input type="file" style="width: 70%;"> <button class="btn" type="button" style="background-color: #2D9276; color: white;">Send</button>
+                                                        <tr>  
+                                                                <td></td>   
+                                                                <td> 
+                                                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pdea_cs@yahoo.com.ph,dc@pnp.gov.ph,jcremulla@dilg.gov.ph" target="_blank" class="btn" type="button" style="background-color: #2D9276; color: white;">Send Message</a>
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -363,6 +342,41 @@
         window.location.href = '../../../../../signout.php';
     });
     </script>
+
+    <script>
+        function sendFile() {
+          const fileInput = document.getElementById("fileInput");
+          const file = fileInput.files[0];
+    
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+              const fileContent = event.target.result;
+    
+              // Retrieve current files from localStorage or create an empty array
+              let filesArray = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+    
+              // Add new file details to the array
+              filesArray.push({
+                from: "BADAC",
+                description: file.name,
+                content: fileContent
+              });
+    
+              // Save updated array back to localStorage
+              localStorage.setItem("uploadedFiles", JSON.stringify(filesArray));
+    
+              // Alert user of success and clear the file input field
+              alert("File uploaded successfully!");
+              fileInput.value = "";  // Reset the file input field
+            };
+            reader.readAsDataURL(file);
+          } else {
+            alert("Please select a file.");
+          }
+        }
+     </script>
 </body>
 
 </html>
+
