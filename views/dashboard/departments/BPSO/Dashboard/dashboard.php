@@ -1,5 +1,5 @@
 <?php
-
+// I just remove about that shit (DB Backend)
 include_once 'C:\xampp\htdocs\SUPERHERO-SYSTEM\controllers\db_connection.php';
 
 $sql = "SELECT COUNT(DISTINCT case_number) AS total_cases FROM complaint";
