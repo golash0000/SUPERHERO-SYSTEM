@@ -47,16 +47,16 @@ if (header) {
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("dashboard")) {
     window.location.href =
-      "/SUPERHERO-SYSTEM/SUPERHERO-SYSTEM/views/dashboard/departments/Admin2/templates/dashboard/dashboard.twig";
+      "/views/dashboard/departments/Admin2/templates/dashboard/dashboard.twig";
   } else if (e.target.classList.contains("CityOrdinance")) {
     window.location.pathname =
-      "/SUPERHERO-SYSTEM/SUPERHERO-SYSTEM/views/dashboard/departments/Admin2/templates/CityOrdinance/CityOrdinance.twig";
+      "/views/dashboard/departments/Admin2/templates/CityOrdinance/CityOrdinance.twig";
   } else if (e.target.classList.contains("request")) {
     window.location.pathname =
-      "/SUPERHERO-SYSTEM/SUPERHERO-SYSTEM/views/dashboard/departments/Admin2/templates/Request/Request.twig";
+      "/views/dashboard/departments/Admin2/templates/Request/Request.twig";
   } else if (e.target.classList.contains("template")) {
     window.location.pathname =
-      "/SUPERHERO-SYSTEM/SUPERHERO-SYSTEM/views/dashboard/departments/Admin2/templates/DocumentTemplate/Template.twig";
+      "/views/dashboard/departments/Admin2/templates/DocumentTemplate/Template.twig";
   }
 });
 
