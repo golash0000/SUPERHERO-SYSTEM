@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome, user! - Brgy Sta. Lucia</title>
+    <title>- File a Case!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -44,22 +44,20 @@
 
                 <div class="sidebar-category">
                     <div class="sidebar-category-header">
-                        <span><i class="fas fa-child category-icon"></i>Brgy. Council for the Protection of
-                            Children</span>
+                        <span><i class="fas fa-child category-icon"></i>Brgy. Council for the Protection of Children</span>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     <div class="sidebar-submenu-show">
-                        <div class="sidebar-submenu-item link1" onclick="setActive(this)"><a href="dashboard.html">Dashboard</a></div>
-                        <div class="sidebar-submenu-item link2 active" onclick="setActive(this);"><a href="file_a_case.html">File a case</a></div>
-                        <div class="sidebar-submenu-item link3" onclick="setActive(this);"><a href="contacts.html">Contacts</a></div>
+                        <div class="sidebar-submenu-item link"><a href="dashboard.html">Home</a></div>
+                        <div class="sidebar-submenu-item active">File a case</div>
+                        <div class="sidebar-submenu-item link"><a href="contacts.html">Contacts</a></div>
                 </div>
 
-                <div class="sidebar-category">
+                <!-- <div class="sidebar-category">
                     <div class="sidebar-category-header">
                         <span><i class="fa-solid fa-id-card category-icon"></i>User Profile</span>
                     </div>
-                </div>
-
+                </div> -->
                 <div class="sidebar-category">
                     <div class="sidebar-category-header" data-bs-toggle="modal" data-bs-target="#signOutModal">
                         <span><i class="fa-solid fa-door-open category-icon"></i>Sign Out</span>
@@ -70,15 +68,19 @@
 
         <div class="content-area active">
             <div id="content">
-                <p>case</p>
                 <form action="">
-                    <div class="form-group">
+                    <div class="form-group comp_name">
                         <label for="complastname">Compliant:</label>
                         <input type="text" placeholder="Last name">
                         <input type="text" placeholder="First name">
                     </div>
-                    <div class="form-group"> 
+                    <div class="form-group defend_name"> 
                         <label for="complastname">Defendant:</label>
+                        <input type="text" placeholder="Last name">
+                        <input type="text" placeholder="First name">
+                    </div>
+                    <div class="form-group respond_name"> 
+                        <label for="complastname">Respondent:</label>
                         <input type="text" placeholder="Last name">
                         <input type="text" placeholder="First name">
                     </div>
@@ -93,27 +95,29 @@
                             <option value="">Exploitation</option>
                         </select>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="description">Details:</label>
-                        <textarea class="form-control" id="deets" placeholder="Description">
-                        </textarea>
+                        <textarea class="form-control" id="deets" placeholder="Description"></textarea>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="loc">Location of the incident:</label>
-                        <textarea class="form-control" id="locs" placeholder="Place">
-                        </textarea>
+                        <textarea class="form-control" id="locs" placeholder="Place"></textarea>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="dattimelocal">Date & Time of the incident:</label>
                         <input type="datetime-local">
                     </div>
-                    <div class="foooooter">
+                    <div class="form-group foooooter">
                         <input type="submit">
                     </div>
                 </form>
+
+
+
             </div>
 
         </div>
+
 
         <!-- Sign Out Confirmation Modal -->
         <div class="modal fade" id="signOutModal" tabindex="-1" aria-labelledby="signOutModalLabel" aria-hidden="true"

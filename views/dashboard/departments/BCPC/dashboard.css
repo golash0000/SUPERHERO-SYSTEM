@@ -16,15 +16,27 @@ html,body {
 }
 
 body{
-    display: flex;
+    display: block;
 }
 
 .content-area {
     margin-top: 100px;
     margin-left: 320px;
-    flex: 1;
-    padding: 20px;
+    padding: 1px;
+    max-width: 2000px;
+    background-color: #e1e8f1;
 }
+#content{
+    border-radius: 5px;
+    background-color: white;
+    padding: 15px;
+    
+    
+}
+.form-group{
+    padding: 0 0 40px 0;
+}
+/* I-frame container */
 .grid-container {
     display: grid;
     grid-template-columns: 1fr auto; /* 1fr for text, auto width for iframe */
@@ -35,4 +47,11 @@ body{
   .grid-container p {
     margin-right: 20px; /* Add space between text and iframe */
   }
-  
+/* file a case input type style */
+input[type="text"]{
+    border-radius: 6.5px;
+    border: 1px solid #e1e8f1;
+    box-sizing: border-box;
+    width: 40%;
+
+}
