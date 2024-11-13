@@ -1,11 +1,11 @@
 <?php
+// I just remove about that shit (DB Backend)
+// include_once 'C:\xampp\htdocs\SUPERHERO-SYSTEM\controllers\db_connection.php';
 
-include_once 'C:\xampp\htdocs\SUPERHERO-SYSTEM\controllers\db_connection.php';
-
-$sql = "SELECT COUNT(DISTINCT case_number) AS total_cases FROM complaint";
-$stmt = $pdo->query($sql);
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-$total_cases = $row['total_cases'];
+// $sql = "SELECT COUNT(DISTINCT case_number) AS total_cases FROM complaint";
+// $stmt = $pdo->query($sql);
+// $row = $stmt->fetch(PDO::FETCH_ASSOC);
+// $total_cases = $row['total_cases'];
 ?>
 
 <!DOCTYPE html>
