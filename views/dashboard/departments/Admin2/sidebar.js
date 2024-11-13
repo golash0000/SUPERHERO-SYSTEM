@@ -53,7 +53,7 @@ document.addEventListener("click", (e) => {
       "/views/dashboard/departments/Admin2/templates/CityOrdinance/CityOrdinance.twig";
   } else if (e.target.classList.contains("request")) {
     window.location.pathname =
-      "/views/dashboard/departments/Admin2/templates/Request/Request.twig";
+      "/SUPERHERO-SYSTEM/views/dashboard/departments/Admin2/templates/Request/Request.twig";
   } else if (e.target.classList.contains("template")) {
     window.location.pathname =
       "/views/dashboard/departments/Admin2/templates/DocumentTemplate/Template.twig";
