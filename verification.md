@@ -1,3 +1,5 @@
+// Provided my original code with database integrated upon every login validation.
+
 <?php
 session_start();
 require_once './vendor/autoload.php';
