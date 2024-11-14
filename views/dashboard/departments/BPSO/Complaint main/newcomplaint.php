@@ -32,7 +32,7 @@
                 <div class="sidebar-category">
     <div class="sidebar-category-header">
         <a href="http://localhost:3000/views/dashboard/departments/BPSO/Dashboard/dashboard.php" class="category-link" style="text-decoration: none; color: inherit;">
-            <span><i class="fa-solid fa-desktop category-icon"></i>Dashboard</span>
+            <span><i class="fa-solid fa-desktop category-icon"></i>Home</span>
         </a>
     </div>
 </div>

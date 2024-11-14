@@ -124,7 +124,7 @@ $pdo = null;
             </div>
             <div class="sidebar-submenu-show">
               <div class="sidebar-submenu-item" onclick="showSection('dasboardsection')">
-                Dashboard
+                Home
               </div>
               <div class="sidebar-submenu-item" onclick="showSection('complaintsection')">
                 Complaints
@@ -137,7 +137,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="sidebar-category">
+          <!-- <div class="sidebar-category">
             <div class="sidebar-category-header">
               <span>
                 <i class="fa-solid fa-id-card category-icon">
@@ -145,7 +145,7 @@ $pdo = null;
                 User Profile
               </span>
             </div>
-          </div>
+          </div> -->
           <div class="sidebar-category">
             <div class="sidebar-category-header" data-bs-toggle="modal" data-bs-target="#signOutModal">
               <span>
