@@ -39,12 +39,13 @@
         <div class="main-content">
             <div class="welcome-message">
                 <h2 class="text-danger">Authorization Request / Process</h2>
-                <p>This contains streamline processing of those who are currently logging in.</p>
+                <p>This contains streamline processing of incoming request made by Brgy. Staffs inside online portal.</p>
             </div>
 
             <div class="auth-tab-container">
                 <div class="auth-divide">
                     <aside id="">
+                        <!-- Client Side operation starts here -->
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
                                 <h2>Notifications</h2>
@@ -53,13 +54,24 @@
                                 <i class="fa-solid fa-rotate-right"></i> Reload
                             </button>
                         </div>
+                        <!-- Client Side operation starts here -->
+                        <div class="mt-3 rounded d-flex flex-column" style="border: 1px solid #d9d9d9; padding: 12px;">
+                            <div class="text-decoration-underline mb-2">
+                                <span>#0001 - Someone is attempting to login!</span>
+                            </div>
+                            <button class="btn btn-danger">View details</button>
+                        </div>
+                        <!-- no notif found -->
+                        <!-- <div class="mt-3 rounded d-flex text-center flex-column" style="color: #c4c4c4; padding: 12px;">
+                            <p class="m-0">Your notifications will appear here.</p>
+                        </div> -->
                     </aside>
                     <aside id="">
-                        <h2>New User Registrations</h2>
+                        <h2>New Brgy. Staffs</h2>
                     </aside>
                 </div>
             </div>
-            
+
         </div>
 
         <!-- Sign Out Confirmation Modal -->
@@ -167,7 +179,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-        <script src="../sidebar.js" type="module"></script>
+    <script src="../diff-sidebar.js" type="module"></script>
     <script src=""></script>
 </body>
 
