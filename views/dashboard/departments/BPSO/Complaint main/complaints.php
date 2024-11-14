@@ -42,16 +42,16 @@ $sql = "SELECT * FROM complaint WHERE id";
 
 <body>
     <div id="app">
-    <nav class="sidebar" style="z-index: 1000;">
-            <div class="sidebar-content">
-                <div class="sidebar-header">Brgy. Sta. Lucia</div>
-                <div class="sidebar-category">
-    <div class="sidebar-category-header">
-        <a href="http://localhost:3000/views/dashboard/departments/BPSO/Dashboard/dashboard.php" class="category-link" style="text-decoration: none; color: inherit;">
-            <span><i class="fa-solid fa-desktop category-icon"></i>Dashboard</span>
-        </a>
+        <nav class="sidebar" style="z-index: 1000;">
+                <div class="sidebar-content">
+                    <div class="sidebar-header">Brgy. Sta. Lucia</div>
+                    <div class="sidebar-category">
+        <div class="sidebar-category-header">
+            <a href="http://localhost:3000/views/dashboard/departments/BPSO/Dashboard/dashboard.php" class="category-link" style="text-decoration: none; color: inherit;">
+                <span><i class="fa-solid fa-desktop category-icon"></i>Home</span>
+            </a>
+        </div>
     </div>
-</div>
 
 
                 <div class="sidebar-category">
@@ -88,11 +88,11 @@ $sql = "SELECT * FROM complaint WHERE id";
 
                     </div>
                 </div>
-                <div class="sidebar-category">
+                <!-- <div class="sidebar-category">
                     <div class="sidebar-category-header">
                         <span><i class="fa-solid fa-id-card category-icon"></i>User Profile</span>
                     </div>
-                </div>
+                </div> -->
                 <div class="sidebar-category">
                     <div class="sidebar-category-header" data-bs-toggle="modal" data-bs-target="#signOutModal">
                         <span><i class="fa-solid fa-door-open category-icon"></i>Sign Out</span>
