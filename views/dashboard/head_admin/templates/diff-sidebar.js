@@ -16,7 +16,7 @@ if (header) {
                     </div>
                     <div class="sidebar-submenu show">
                         <div class="sidebar-submenu-item main">Overview</div>
-                        <div class="sidebar-submenu-item account-management">Account Management</div>
+                        <div class="sidebar-submenu-item view-authorize">Authorization</div>
                         <div class="sidebar-submenu-item document-process">Document Processing</div>
                         <div class="sidebar-submenu-item document-records">Document Records</div>
                     </div>
